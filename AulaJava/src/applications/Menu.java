@@ -1,5 +1,7 @@
 package applications;
 
+//comentario jdk
+
 public class Menu {
 	public static void bemVindo() {
 		linha();
