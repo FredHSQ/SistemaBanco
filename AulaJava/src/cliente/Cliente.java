@@ -1,7 +1,6 @@
 package cliente;
 
 
-// Comentario bom 
 
 public class Cliente {
 	private String cpf;
