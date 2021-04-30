@@ -1,11 +1,9 @@
 package applications;
 
-//comentario jdk
-
 public class Menu {
 	public static void bemVindo() {
 		linha();
-		System.out.println("|Bem vindo ao banco Liga da Justiça|");
+		System.out.println("|Bem vindo ao banco Liga da JustiÃ§a|");
 		linha();
 		
 	}
