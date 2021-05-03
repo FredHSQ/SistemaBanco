@@ -1,8 +1,8 @@
 package pessoal;
 
 public class Presidente extends Funcionario {
-	private int agencia; //indentificador
 	
+	// construtores
 	public Presidente () {
 		
 	}

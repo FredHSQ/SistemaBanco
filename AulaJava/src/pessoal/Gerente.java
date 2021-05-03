@@ -3,6 +3,7 @@ package pessoal;
 public class Gerente extends Funcionario{
 	private int agencia; //indentificador
 	
+	// construtores
 	public Gerente () {
 	}
 	
@@ -12,7 +13,8 @@ public class Gerente extends Funcionario{
 		setCargo(cargo);
 		this.agencia = agencia;
 	}
-
+	
+	//getter agencia
 	public int getAgencia() {
 		return agencia;
 	}

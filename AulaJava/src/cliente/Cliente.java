@@ -6,6 +6,7 @@ public class Cliente {
 	private String cpf;
 	private String senha;
 	
+	//construtores
 	private Cliente() {
 		
 	}
@@ -13,6 +14,9 @@ public class Cliente {
 		this.cpf= cpf;
 		this.senha=senha;
 	}
+	
+	//getter do cpf. Não foi pedido alteração de cpf nem de senha do sistema,
+	//como não existem filhos de clientes não acredito que seja nescesário nada além disso.
 	public String getCpf() {
 		return cpf;
 	}

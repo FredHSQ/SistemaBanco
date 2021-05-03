@@ -34,7 +34,8 @@ public class Conta {
 		}
 	}	
 	
-	//função para tranferir "valor" de dentro do "saldo" da conta chamada para uma conta destino
+	//função para tranferir "valor" de dentro do "saldo" da conta chamada
+	//para uma conta destino
 	public void transfere (double valorTransfere, Conta contaDestino) {
 		if (this.sacar(valorTransfere) == true) {
 			contaDestino.depositar(valorTransfere);
@@ -42,7 +43,8 @@ public class Conta {
 		} 
 	}
 	
-	//get do "saldo". Não tem setter pq o saldo só muda com depositos, saques e transferencias
+	//get do "saldo".
+	//Não tem setter pq o saldo só muda com depositos, saques e transferencias
 	public double getSaldo() {
 		return saldo;
 	}
@@ -54,11 +56,11 @@ public class Conta {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	
+	//get e setter da "agencia"
 	public int getAgencia() {
 		return agencia;
 	}
-
 	public void setAgencia(int agencia) {
 		this.agencia = agencia;
 	}

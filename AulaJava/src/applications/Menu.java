@@ -1,4 +1,5 @@
 package applications;
+// só bobeira aqui.
 
 public class Menu {
 	public static void bemVindo() {
