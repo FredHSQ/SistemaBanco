@@ -4,7 +4,7 @@ package applications;
 public class Menu {
 	public static void bemVindo() {
 		linha();
-		System.out.println("|Bem vindo ao banco Liga da JustiÃ§a|");
+		System.out.println("|Bem vindo ao banco Liga da Justiça|");
 		linha();
 		
 	}

@@ -8,6 +8,7 @@ public class ContaCorrente extends Conta {
 	public ContaCorrente() {
 		
 	}
+	
 	public ContaCorrente(String cpf, int agencia) {
 		setCpf(cpf);
 		setAgencia(agencia);

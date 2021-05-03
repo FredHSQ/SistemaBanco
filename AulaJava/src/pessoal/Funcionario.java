@@ -1,20 +1,10 @@
 package pessoal;
 
-public class Funcionario {
+public abstract class Funcionario {
 	private String cpf;
 	private String senha;
 	private String cargo; //indentificador. (discutir) 
 						  //professor falou que pode ser em lugares diferentes
-	
-	// construtores
-	public Funcionario () {
-	}
-	
-	public Funcionario (String senha, String cpf, String cargo) {
-		this.cpf =cpf;
-		this.senha = senha;
-		this.cargo = cargo;
-	}
 	
 	
 	//getters e setters CPF

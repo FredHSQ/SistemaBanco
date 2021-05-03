@@ -5,6 +5,7 @@ public class Gerente extends Funcionario{
 	
 	// construtores
 	public Gerente () {
+		
 	}
 	
 	public Gerente (String senha, String cpf, String cargo, int agencia){

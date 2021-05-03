@@ -1,21 +1,10 @@
 package cliente;
 
-public class Conta {
-	private String cpf;
-	private double saldo;
-	private int agencia;//indentificador
+public abstract class Conta {
+	protected String cpf;
+	protected double saldo;
+	protected int agencia;//indentificador
 	
-	
-	//Construtor default para não quebrar o programa caso eu altere algo no pai,
-	//que não é nescessário em todos os filhos
-	public Conta() {
-	}
-	
-	//Construtor. Tem a função de criar e armazenar os dados "cpf" em uma "Conta"
-	public Conta(String cpf, int agencia) {
-		this.cpf = cpf;
-		this.agencia = agencia;
-	}
 	
 	//função para depositar "valor" dentro do "saldo" da conta chamada
 	public void depositar (double valor){
@@ -40,7 +29,7 @@ public class Conta {
 		if (this.sacar(valorTransfere) == true) {
 			contaDestino.depositar(valorTransfere);
 			System.out.println("O valor "+ valorTransfere + " foi transferido!");
-		} 
+		}
 	}
 	
 	//get do "saldo".
