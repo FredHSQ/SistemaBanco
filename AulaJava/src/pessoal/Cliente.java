@@ -1,4 +1,4 @@
-package cliente;
+package pessoal;
 
 
 public class Cliente {
