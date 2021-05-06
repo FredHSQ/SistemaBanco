@@ -1,8 +1,7 @@
-package pessoal;
+package usuario;
 
-public abstract class Funcionario {
-	private String cpf;
-	private String senha;
+public abstract class Funcionario extends Usuario {
+
 	private String cargo; //indentificador. (discutir) 
 						  //professor falou que pode ser em lugares diferentes
 	

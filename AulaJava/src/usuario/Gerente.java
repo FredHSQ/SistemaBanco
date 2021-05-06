@@ -1,8 +1,8 @@
-package pessoal;
+package usuario;
 
 public class Gerente extends Funcionario{
 	private int agencia; //indentificador
-	
+	private  static String tipoUsuario = "Gerente";
 	// construtores
 	public Gerente () {
 		

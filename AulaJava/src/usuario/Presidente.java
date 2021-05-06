@@ -1,7 +1,7 @@
-package pessoal;
+package usuario;
 
 public class Presidente extends Funcionario {
-	
+	private  static String tipoUsuario = "Presidente";
 	// construtores
 	public Presidente () {
 		
