@@ -2,7 +2,14 @@ package usuario;
 
 
 public class Cliente extends Usuario {
-	 private  static String tipoUsuario = "Cliente";
-	
 
+	
+	public Cliente() {
+		setCargo("Cliente");
+	}
+	public Cliente(String senha, String cpf) {
+		setCpf(cpf);
+		setSenha(senha);
+		setCargo("Cliente");
+	}
 }

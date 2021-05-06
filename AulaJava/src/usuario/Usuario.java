@@ -3,7 +3,7 @@ package usuario;
 public abstract class Usuario {
 	protected String cpf;
 	protected String senha;
-	protected String tipoUsuario;
+	protected String cargo;
 	
 	public Usuario() {
 		
@@ -13,19 +13,17 @@ public abstract class Usuario {
 		this.senha=senha;
 	}
 	
-	//getter do cpf e da senha. Não foi pedido alteração de cpf nem de senha do sistema,
-	//como não existem filhos de Usuarios não acredito que seja nescesário nada além disso.
 	public String getCpf() {
 		return this.cpf;
 	}
 	public String getSenha() {
 		return this.senha;
 	}
-	public String getTipoUsuario() {
-		return tipoUsuario;
+	public String getCargo() {
+		return cargo;
 	}
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
+	public void setCargo(String tipoUsuario) {
+		this.cargo = tipoUsuario;
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;

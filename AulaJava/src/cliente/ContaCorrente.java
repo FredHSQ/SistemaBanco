@@ -2,7 +2,7 @@ package cliente;
 
 public class ContaCorrente extends Conta {
 	
-	private int tipo; //indentificador
+	private int tipo = 1; //indentificador
 	
 	// construtores
 	public ContaCorrente() {

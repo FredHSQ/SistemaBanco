@@ -7,21 +7,23 @@ import cliente.Conta;
 import cliente.ContaCorrente;
 import cliente.ContaPoupanca;
 import exceptions.ContaExceptions;
+import usuario.Gerente;
+import usuario.Usuario;
 
 public class SistemaInterno {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner (System.in);
 		Menu.bemVindo();
-		
-		
+		Usuario gerente1 = new Gerente("swordfish", "11122233344",1);
+		System.out.println("O gerente tem o cargo gerente? "+ gerente1.getCargo());
 		
 		//Função depositar (lucas ta dando uma olhada)
 		int i=0;
 		do { 
 			try {
 				System.out.print("Digite o valor que gostaria de depositar:\nR$");
-				conta4.depositar(sc.nextDouble());
+				"atribuição".depositar(sc.nextDouble());
 			} catch (ContaExceptions e) {
 				System.out.println(e+"\n");
 			}

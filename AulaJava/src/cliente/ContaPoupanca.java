@@ -1,7 +1,7 @@
 package cliente;
 
 public class ContaPoupanca extends Conta {
-	private int tipo; //indentificador
+	private int tipo = 2; //indentificador
 	
 	//construtores
 	public ContaPoupanca (){

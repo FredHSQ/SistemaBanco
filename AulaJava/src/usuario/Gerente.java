@@ -1,18 +1,17 @@
 package usuario;
 
-public class Gerente extends Funcionario{
+public class Gerente extends Usuario{
 	private int agencia; //indentificador
-	private  static String tipoUsuario = "Gerente";
 	// construtores
 	public Gerente () {
-		
+		setCargo("Gerente");
 	}
 	
-	public Gerente (String senha, String cpf, String cargo, int agencia){
+	public Gerente (String senha, String cpf, int agencia){
 		setCpf(cpf);
 		setSenha(senha);
-		setCargo(cargo);
 		this.agencia = agencia;
+		setCargo("Gerente");
 	}
 	
 	//getter agencia
