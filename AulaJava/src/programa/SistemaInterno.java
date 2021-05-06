@@ -18,28 +18,25 @@ public class SistemaInterno {
 		Menu.bemVindo();
 		
 		String acesso = null;
+		String cpfInformado;
 		Gerente g1 = new Gerente("123456","12345678910",1);
         Gerente g2 = new Gerente("paodequeijo","12345678911",2);
         Gerente g3 = new Gerente("lasanhamilanesa","12345678912",3);
 
-        Map<String, String> mapaLogin = new HashMap<>();
-		mapaLogin.put(g1.getCpf(), g1.getSenha());
-		mapaLogin.put(g2.getCpf(), g2.getSenha());
-		mapaLogin.put(g3.getCpf(), g3.getSenha());
+        Map<String, Usuario> mapaUsuario = new HashMap<>();
+		mapaUsuario.put(g1.getCpf(), g1);
+		mapaUsuario.put(g2.getCpf(), g2);
+		mapaUsuario.put(g3.getCpf(), g3);
 		
-		Map<String, String> mapaCargo = new HashMap<>();
-		mapaCargo.put(g1.getCpf(), g1.getCargo());
-		mapaCargo.put(g2.getCpf(), g2.getCargo());
-		mapaCargo.put(g3.getCpf(), g3.getCargo());
 		
 		do {
 			System.out.println("Por favor informe o CPF: ");
-			String cpfInformado = sc.next();
+			cpfInformado = sc.next();
 			System.out.println("Por favor informe a senha: ");
 			String senhaInformada =sc.next();
-			if(mapaLogin.containsKey(cpfInformado) && mapaLogin.containsValue(senhaInformada)) {
+			if(mapaUsuario.containsKey(cpfInformado) && mapaUsuario.get(cpfInformado).getSenha()==senhaInformada) {
 				System.out.println("Usuario Correto!!!");
-				acesso= mapaCargo.get(cpfInformado);
+				acesso= mapaUsuario.get(cpfInformado).getCargo();
 			}
 			if (acesso == null) {
 				System.out.println("Senha e CPF não correspondem a nenhum usuario!!!");
@@ -50,7 +47,7 @@ public class SistemaInterno {
 		
 		switch(acesso) {
 		case "Cliente":
-			menuCliente();
+			menuCliente(mapaUsuario.get(cpfInformado));
 			break;
 		case "Presidente":
 			menuPresidente();
