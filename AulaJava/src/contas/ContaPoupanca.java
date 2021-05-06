@@ -1,4 +1,4 @@
-package cliente;
+package contas;
 
 public class ContaPoupanca extends Conta {
 	private int tipo = 2; //indentificador

@@ -1,4 +1,4 @@
-package cliente;
+package contas;
 
 public class ContaCorrente extends Conta {
 	

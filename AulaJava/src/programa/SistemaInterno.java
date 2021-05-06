@@ -3,9 +3,10 @@ package programa;
 import java.util.*;
 
 import applications.Menu;
-import cliente.Conta;
-import cliente.ContaCorrente;
-import cliente.ContaPoupanca;
+import bancoEnum.CargoEnum;
+import contas.Conta;
+import contas.ContaCorrente;
+import contas.ContaPoupanca;
 import exceptions.ContaExceptions;
 import usuario.Gerente;
 import usuario.Usuario;
@@ -15,26 +16,70 @@ public class SistemaInterno {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner (System.in);
 		Menu.bemVindo();
-		Usuario gerente1 = new Gerente("swordfish", "11122233344",1);
-		System.out.println("O gerente tem o cargo gerente? "+ gerente1.getCargo());
 		
-		//Função depositar (lucas ta dando uma olhada)
-		int i=0;
-		do { 
-			try {
-				System.out.print("Digite o valor que gostaria de depositar:\nR$");
-				"atribuição".depositar(sc.nextDouble());
-			} catch (ContaExceptions e) {
-				System.out.println(e+"\n");
+		String acesso = null;
+		Gerente g1 = new Gerente("123456","12345678910",1);
+        Gerente g2 = new Gerente("paodequeijo","12345678911",2);
+        Gerente g3 = new Gerente("lasanhamilanesa","12345678912",3);
+
+        Map<String, String> mapaLogin = new HashMap<>();
+		mapaLogin.put(g1.getCpf(), g1.getSenha());
+		mapaLogin.put(g2.getCpf(), g2.getSenha());
+		mapaLogin.put(g3.getCpf(), g3.getSenha());
+		
+		Map<String, String> mapaCargo = new HashMap<>();
+		mapaCargo.put(g1.getCpf(), g1.getCargo());
+		mapaCargo.put(g2.getCpf(), g2.getCargo());
+		mapaCargo.put(g3.getCpf(), g3.getCargo());
+		
+		do {
+			System.out.println("Por favor informe o CPF: ");
+			String cpfInformado = sc.next();
+			System.out.println("Por favor informe a senha: ");
+			String senhaInformada =sc.next();
+			if(mapaLogin.containsKey(cpfInformado) && mapaLogin.containsValue(senhaInformada)) {
+				System.out.println("Usuario Correto!!!");
+				acesso= mapaCargo.get(cpfInformado);
 			}
-			System.out.println("Gostaria de fazer outro deposito?\n1 para sim\n2 para não");
-			int sn=sc.nextInt();
-				if (sn==1) {
-					i=0;
-				} else {
-					i=1;
-				}
-		}while (i==0);
+			if (acesso == null) {
+				System.out.println("Senha e CPF não correspondem a nenhum usuario!!!");
+			}
+		} while(acesso ==null);
+		System.out.println(acesso);
+		
+		
+		switch(acesso) {
+		case "Cliente":
+			menuCliente();
+			break;
+		case "Presidente":
+			menuPresidente();
+			break;
+		case "Gerente":
+			menuPresidente();
+			break;
+		case "Diretor":
+			menuPresidente();
+			break;
+		}
+//		&& mapaUsuarios.containsKey(senhaInformada)
+		//Função depositar (lucas ta dando uma olhada)
+//		int i=0;
+//		do { 
+//			try {
+//				System.out.print("Digite o valor que gostaria de depositar:\nR$");
+//				"atribuição".depositar(sc.nextDouble());
+//			} catch (ContaExceptions e) {
+//				System.out.println(e+"\n");
+//			}
+//			System.out.println("Gostaria de fazer outro deposito?\n1 para sim\n2 para não");
+//			int sn=sc.nextInt();
+//				if (sn==1) {
+//					i=0;
+//				} else {
+//					i=1;
+//				}
+//		}while (i==0);
 		
 		
 		// Todas as movimentações tem que ser registradas em um arquivo de texto

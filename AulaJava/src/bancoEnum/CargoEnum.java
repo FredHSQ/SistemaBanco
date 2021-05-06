@@ -1,0 +1,8 @@
+package bancoEnum;
+
+public enum CargoEnum {
+	DIRETOR,
+	PRESIDENTE,
+	CLIENTE,
+	GERENTE("12345678910","12345678911","12345678912");
+}

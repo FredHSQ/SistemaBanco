@@ -1,4 +1,4 @@
-package cliente;
+package contas;
 
 import exceptions.ContaExceptions;
 import java.text.DecimalFormat;
