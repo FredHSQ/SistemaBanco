@@ -9,9 +9,10 @@ public class ContaCorrente extends Conta {
 		
 	}
 	
-	public ContaCorrente(String cpf, int agencia) {
+	public ContaCorrente(String cpf, int agencia, double saldo) {
 		setCpf(cpf);
 		setAgencia(agencia);
+		setSaldo(saldo);
 	}
 	
 	// getter do "tipo"

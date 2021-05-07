@@ -11,16 +11,18 @@ import java.time.format.DateTimeFormatter;
 import applications.Menu;
 
 public class EscritorLeitor {
-	public static void escritorMovimentacoes(String cpf, Integer agencia, Double valor, Double saldo) throws IOException {
-		BufferedWriter escritor = new BufferedWriter(new FileWriter("../temp/"+LocalDateTime.now()+".txt", true));
+	public static void escritorMovimentacoes(String cpf, Integer agencia, Double valor, Double saldo, String indentificadorTransicao) throws IOException {
+		BufferedWriter escritor = new BufferedWriter(new FileWriter("../temp/log.txt", true));
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
-		escritor.append("Realizador da movimentação: "+ cpf +" ");
-		escritor.append(String.valueOf(agencia)+" ");
-		escritor.append(String.valueOf(valor)+" ");
-		escritor.append(String.valueOf(saldo)+" ");
-		escritor.append(String.valueOf(LocalDateTime.now().format(formatter)));
-		escritor.append(Menu.logo());
+		escritor.append("Tipo de transição: "+ indentificadorTransicao +"\n");
+		escritor.append("CPF do titular: "+ cpf +"\n");
+		escritor.append("Agencia da conta: " + String.valueOf(agencia)+"\n");
+		escritor.append("Custo da transação: R$00,10" + String.valueOf(valor)+"\n");
+		escritor.append("Valor da movimentação: R$" + String.valueOf(valor)+"\n");
+		escritor.append("Valor do saldo atual: R$" + String.valueOf(saldo)+"\n");
+		escritor.append("Data: " + String.valueOf(LocalDateTime.now().format(formatter))+"\n");
+		escritor.append(Menu.logo()+"\n");
 		escritor.close();
 	}
 }

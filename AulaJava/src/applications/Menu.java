@@ -1,13 +1,16 @@
 package applications;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
+import contas.Conta;
 import exceptions.ContaExceptions;
 import usuario.Usuario;
 
 public class Menu {
-	
+	static Scanner sc =new Scanner(System.in);
 	//função para criação do menu inicial
 	public static void bemVindo() {
 		linha("|Bem vindo ao banco Justice League|"); // chama função "linha()" usando a maior frase do que foi escrito no menu
@@ -16,6 +19,77 @@ public class Menu {
 		System.out.println();
 		
 		
+	}
+	
+	public static void menuMovimentacao(Conta conta) throws ContaExceptions, IOException {
+		int i = 1;
+		do {
+			System.out.println(
+					"Você gostaria de fazer qual tipo de movimentação?\n1 - Depositar\n2 - Sacar\n3 - Transferir\n4 - Sair");
+			int opcao = sc.nextInt();
+			switch (opcao) {
+			case 1:
+				System.out.println("Digite o valor que gostaria de depositar: ");
+				Double valor = sc.nextDouble();
+				Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
+				System.out.println();
+				try {
+					conta.depositar(valor);
+					System.out.println("Gostaria de realizar outra transação?\n1 - Sim\n2 - Não");
+					i = sc.nextInt();
+					if (i != 1 && i != 2) {
+						System.out.println("O valor digitado não é válido. Repita por favor.");
+						Menu.linha("O valor digitado não é válido. Repita por favor.");
+						System.out.println();
+						i = 1;
+					}
+				} catch (ContaExceptions e) {
+					System.out.println(e);
+				}
+				break;
+			case 2:
+				System.out.println("Digite o valor que gostaria de sacar: ");
+				valor = sc.nextDouble();
+				Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
+				System.out.println();
+				try {
+					conta.sacar(valor);
+					System.out.println("Gostaria de realizar outra transação?\n1 - Sim\n2 - Não");
+					i = sc.nextInt();
+					if (i != 1 && i != 2) {
+						System.out.println("O valor digitado não é válido. Repita por favor.");
+						Menu.linha("O valor digitado não é válido. Repita por favor.");
+						System.out.println();
+						i = 1;
+					}
+				} catch (ContaExceptions e) {
+					System.out.println(e);
+				}
+				break;
+			case 3:
+				System.out.println("Digite o valor que gostaria de transferir: ");
+				valor = sc.nextDouble();
+				System.out.println("Digite o cpf da conta que gostaria de transferir para: ");
+				sc.next();
+				String cpf = sc.next();
+				Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
+				System.out.println();
+				try {
+					conta.transfere(valor, cpf);
+					System.out.println("Gostaria de realizar outra transação?\n1 - Sim\n2 - Não");
+					i = sc.nextInt();
+					if (i != 1 && i != 2) {
+						System.out.println("O valor digitado não é válido. Repita por favor.");
+						Menu.linha("O valor digitado não é válido. Repita por favor.");
+						System.out.println();
+						i = 1;
+					}
+				} catch (ContaExceptions e) {
+					System.out.println(e);
+				}
+				break;
+			}
+		} while (i != 2);
 	}
 	
 	
@@ -48,14 +122,5 @@ public class Menu {
 	public static String erroMenu() {
 		return "Erro encontrado: ";
 	}
-	public boolean sacar (double valor) throws ContaExceptions {
-		if (acesso==null) {
-			System.out.println("O valor requerido é maior que o saldo atual (" + this.saldo + 
-					") da conta.");
-			return false;
-		}else {
-			this.saldo = this.saldo-valor;
-			return true;
-		}
-	}
+
 }

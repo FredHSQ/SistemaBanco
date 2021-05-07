@@ -7,9 +7,10 @@ public class ContaPoupanca extends Conta {
 	public ContaPoupanca (){
 		
 	}
-	public ContaPoupanca(String cpf, int agencia) {
+	public ContaPoupanca(String cpf, int agencia, double saldo) {
 		setCpf(cpf);
 		setAgencia(agencia);
+		setSaldo(saldo);
 	}
 	//getter do "tipo"
 	public int getTipo() {

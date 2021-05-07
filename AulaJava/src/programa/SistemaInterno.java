@@ -16,14 +16,18 @@ import escritorLeitor.EscritorLeitor;
 
 public class SistemaInterno {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ContaExceptions {
 		Scanner sc = new Scanner (System.in);
 		
-		EscritorLeitor.escritorMovimentacoes("12345", 1, 10.10, 100.02);
 		System.out.println(Menu.logo());
 		Menu.bemVindo();
 		
-		
+		Conta conta1 = new ContaCorrente("Lucas" , 1, 100);
+
+      	Conta conta2 = new ContaCorrente("Marcelo",2,200);
+
+      	Conta conta3 = new ContaCorrente("Rafael",3,300);
+      
 		Gerente g1 = new Gerente("123456","12345678910",1);
         Gerente g2 = new Gerente("paodequeijo","12345678911",2);
         Gerente g3 = new Gerente("lasanhamilanesa","12345678912",3);
@@ -34,6 +38,8 @@ public class SistemaInterno {
 		mapaUsuario.put(g3.getCpf(), g3);
 		
 		
+		
+		Menu.menuMovimentacao(conta1);
 		
 		// processo de login
 //		String acesso = null;
