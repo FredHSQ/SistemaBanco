@@ -34,31 +34,31 @@ public class SistemaInterno {
 			cpfInformado = sc.next();
 			System.out.println("Por favor informe a senha: ");
 			String senhaInformada =sc.next();
-			if(mapaUsuario.containsKey(cpfInformado) && mapaUsuario.get(cpfInformado).getSenha()==senhaInformada) {
-				System.out.println("Usuario Correto!!!");
+			if(mapaUsuario.containsKey(cpfInformado) && mapaUsuario.get(cpfInformado).getSenha().equals(senhaInformada)) {
+				System.out.println("Login concluído");
+				Menu.linha("Por favor informe a senha: ");
 				acesso= mapaUsuario.get(cpfInformado).getCargo();
 			}
 			if (acesso == null) {
 				System.out.println("Senha e CPF não correspondem a nenhum usuario!!!");
 			}
 		} while(acesso ==null);
-		System.out.println(acesso);
 		
-		
-		switch(acesso) {
-		case "Cliente":
-			menuCliente(mapaUsuario.get(cpfInformado));
-			break;
-		case "Presidente":
-			menuPresidente();
-			break;
-		case "Gerente":
-			menuPresidente();
-			break;
-		case "Diretor":
-			menuPresidente();
-			break;
-		}
+//		
+//		switch(acesso) {
+//		case "Cliente":
+//			menuCliente(mapaUsuario.get(cpfInformado));
+//			break;
+//		case "Presidente":
+//			menuPresidente();
+//			break;
+//		case "Gerente":
+//			menuPresidente();
+//			break;
+//		case "Diretor":
+//			menuPresidente();
+//			break;
+//		}
 //		&& mapaUsuarios.containsKey(senhaInformada)
 		//Função depositar (lucas ta dando uma olhada)
 //		int i=0;
