@@ -18,6 +18,26 @@ public class Menu {
 		
 	}
 	
+	
+	public static void logo() {
+		
+		 System.out.println("    @@@@@@@@@@@@@.@@@@@@@@@@@@@      \r\n"
+				+ "    @@                       @@      \r\n"
+				+ "    @@    @@@@@@@ @@@        @@      \r\n"
+				+ "    @@        @@@ @@@        @@      \r\n"
+				+ "    @@        @@@ @@@        @@      \r\n"
+				+ "    @@        @@   @@        @@      \r\n"
+				+ "    @@   /@.  @@@ @@@        @@      \r\n"
+				+ "    @@  @@@.  @@@ @@@        @@      \r\n"
+				+ "    @@  @@@@@@@@@ @@@/@@@@   @@      \r\n"
+				+ "    @@   #@@@@@@  @@@@@@     @@      \r\n"
+				+ "    @@                       @@      \r\n"
+				+ "    @@@@@@@@@@@@@.@@@@@@@@@@@@@      \r\n"
+				+ "                                ");
+	}
+	
+	
+	
 	//função para criação de linhas, usar como variável a maior frase impressa sem "\n"
 	public static void linha(String maiorFraseMenu) {
 		for (int i=0;i<maiorFraseMenu.length();i++) {

@@ -15,6 +15,7 @@ public class SistemaInterno {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner (System.in);
+		Menu.logo();
 		Menu.bemVindo();
 		
 		String acesso = null;
