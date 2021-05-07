@@ -22,12 +22,18 @@ public class SistemaInterno {
 		System.out.println(Menu.logo());
 		Menu.bemVindo();
 		
+		
 		Conta conta1 = new ContaCorrente("Lucas" , 1, 100);
 
       	Conta conta2 = new ContaCorrente("Marcelo",2,200);
 
       	Conta conta3 = new ContaCorrente("Rafael",3,300);
-      
+      	
+      	Map<String, Conta> mapaConta = new HashMap<>();
+    	mapaConta.put(conta1.getCpf(), conta1);
+    	mapaConta.put(conta2.getCpf(), conta2);
+    	mapaConta.put(conta3.getCpf(), conta3);
+    	
 		Gerente g1 = new Gerente("123456","12345678910",1);
         Gerente g2 = new Gerente("paodequeijo","12345678911",2);
         Gerente g3 = new Gerente("lasanhamilanesa","12345678912",3);

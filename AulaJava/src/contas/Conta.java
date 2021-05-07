@@ -39,13 +39,19 @@ public abstract class Conta {
 	}
 	
 	//função para sacar "valor" de dentro do "saldo" da conta chamada
-	public boolean sacar (double valor) throws ContaExceptions {
+	public boolean sacar (double valor) throws ContaExceptions, IOException {
 		if (this.saldo<valor) {
 			System.out.println("O valor requerido é maior que o saldo atual (" + this.saldo + 
 					") da conta.");
 			return false;
 		}else {
-			this.saldo = this.saldo-valor;
+			System.out.printf("O saldo era: R$%.2f\n",this.saldo);	
+			System.out.printf("O custo da movimentação é: R$0,10\n");
+			System.out.printf("O valor sacado foi de: R$%.2f\n",valor);
+			this.saldo = this.saldo-valor-0.10;
+			System.out.printf("O novo saldo é: R$%.2f\n",this.saldo);
+			qtdMovimentacao++;
+			EscritorLeitor.escritorMovimentacoes(this.cpf, this.agencia, valor, this.saldo, "saque");
 			return true;
 		}
 	}	

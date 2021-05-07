@@ -74,7 +74,6 @@ public class Menu {
 				String cpf = sc.next();
 				Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
 				System.out.println();
-				try {
 					conta.transfere(valor, cpf);
 					System.out.println("Gostaria de realizar outra transação?\n1 - Sim\n2 - Não");
 					i = sc.nextInt();
@@ -84,9 +83,6 @@ public class Menu {
 						System.out.println();
 						i = 1;
 					}
-				} catch (ContaExceptions e) {
-					System.out.println(e);
-				}
 				break;
 			}
 		} while (i != 2);
