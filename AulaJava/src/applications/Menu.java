@@ -10,18 +10,18 @@ public class Menu {
 	
 	//função para criação do menu inicial
 	public static void bemVindo() {
-		linha("|Bem vindo ao banco Liga da Justiça|"); // chama função "linha()" usando a maior frase do que foi escrito no menu
-		System.out.println("\n|Bem vindo ao banco Liga da Justiça|");
-		linha("|Bem vindo ao banco Liga da Justiça|"); // chama função "linha()" usando a maior frase do que foi escrito no menu
+		linha("|Bem vindo ao banco Justice League|"); // chama função "linha()" usando a maior frase do que foi escrito no menu
+		System.out.println("\n|Bem vindo ao banco Justice League|");
+		linha("|Bem vindo ao banco Justice League|"); // chama função "linha()" usando a maior frase do que foi escrito no menu
 		System.out.println();
 		
 		
 	}
 	
 	
-	public static void logo() {
+	public static String logo() {
 		
-		 System.out.println("    @@@@@@@@@@@@@.@@@@@@@@@@@@@      \r\n"
+		return ("    @@@@@@@@@@@@@.@@@@@@@@@@@@@      \r\n"
 				+ "    @@                       @@      \r\n"
 				+ "    @@    @@@@@@@ @@@        @@      \r\n"
 				+ "    @@        @@@ @@@        @@      \r\n"

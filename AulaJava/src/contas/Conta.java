@@ -1,28 +1,34 @@
 package contas;
 
 import exceptions.ContaExceptions;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.text.DecimalFormat;
 
 import applications.Menu;
+import escritorLeitor.EscritorLeitor;
 
 public abstract class Conta {
 	
 	protected String cpf;
 	protected double saldo;
 	protected int agencia;//indentificador
-	private static int qtdTransferencia;
+	private static int qtdMovimentacao;
 	
 	//função para depositar "valor" dentro do "saldo" da conta chamada
 	public void depositar (double valor) throws ContaExceptions {
 		 if(valor <= 0) {
-	            throw new ContaExceptions(Menu.erroMenu()+"Valor de deposito menor ou igual a 0");
+			 ;   
+			 throw new ContaExceptions(Menu.erroMenu() + "Valor de deposito menor ou igual a 0\n");
 		} else {
 			System.out.printf("O saldo era: R$%.2f\n",this.saldo);	
 			System.out.printf("O custo da movimentação é: R$0,10\n");
 			System.out.printf("O valor depositado foi de: R$%.2f\n",valor);
 			this.saldo = this.saldo+valor-0.10;
 			System.out.printf("O novo saldo é: R$%.2f\n",this.saldo);
-			qtdTransferencia++;
+			qtdMovimentacao++;
+			EscritorLeitor.escritorMovimentacoes(this.cpf, this.agencia, valor, this.saldo);
 		}
 	}
 	

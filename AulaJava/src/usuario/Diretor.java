@@ -1,14 +1,15 @@
 package usuario;
 
+import bancoEnum.CargoEnum;
+
 public class Diretor extends Usuario {
-	private final String cargo = "Diretor";
 	// construtores
 	public Diretor() {
-		setCargo("Diretor");
+		setCargo(CargoEnum.DIRETOR.name());
 	}
 	public Diretor(String senha, String cpf, String cargo) {
 		setCpf(cpf);
 		setSenha(senha);
-		setCargo("Diretor");
+		setCargo(CargoEnum.DIRETOR.name());
 	}
 }

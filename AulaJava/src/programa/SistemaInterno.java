@@ -1,5 +1,6 @@
 package programa;
 
+import java.io.IOException;
 import java.util.*;
 
 import applications.Menu;
@@ -7,19 +8,22 @@ import bancoEnum.CargoEnum;
 import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
+import escritorLeitor.EscritorLeitor;
 import exceptions.ContaExceptions;
 import usuario.Gerente;
 import usuario.Usuario;
+import escritorLeitor.EscritorLeitor;
 
 public class SistemaInterno {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner (System.in);
-		Menu.logo();
+		
+		EscritorLeitor.escritorMovimentacoes("12345", 1, 10.10, 100.02);
+		System.out.println(Menu.logo());
 		Menu.bemVindo();
 		
-		String acesso = null;
-		String cpfInformado;
+		
 		Gerente g1 = new Gerente("123456","12345678910",1);
         Gerente g2 = new Gerente("paodequeijo","12345678911",2);
         Gerente g3 = new Gerente("lasanhamilanesa","12345678912",3);
@@ -30,36 +34,42 @@ public class SistemaInterno {
 		mapaUsuario.put(g3.getCpf(), g3);
 		
 		
-		do {
-			System.out.println("Por favor informe o CPF: ");
-			cpfInformado = sc.next();
-			System.out.println("Por favor informe a senha: ");
-			String senhaInformada =sc.next();
-			if(mapaUsuario.containsKey(cpfInformado) && mapaUsuario.get(cpfInformado).getSenha().equals(senhaInformada)) {
-				System.out.println("Login concluído");
-				Menu.linha("Por favor informe a senha: ");
-				acesso= mapaUsuario.get(cpfInformado).getCargo();
-			}
-			if (acesso == null) {
-				System.out.println("Senha e CPF não correspondem a nenhum usuario!!!");
-			}
-		} while(acesso ==null);
 		
+		// processo de login
+//		String acesso = null;
+//		String cpfInformado;
 //		
-//		switch(acesso) {
-//		case "Cliente":
+//		do {
+//            System.out.println("Por favor informe o CPF: ");
+//            cpfInformado = sc.next();
+//            System.out.println("Por favor informe a senha: ");
+//            String senhaInformada =sc.next();
+//            if(mapaUsuario.containsKey(cpfInformado) && mapaUsuario.get(cpfInformado).getSenha().equals(senhaInformada)) {
+//                System.out.println("Login concluído");
+//                Menu.linha("Por favor informe a senha: ");
+//                acesso= mapaUsuario.get(cpfInformado).getCargo();
+//            }
+//            if (acesso == null) {
+//                System.out.println("Senha e CPF não correspondem a nenhum usuario!!!");
+//            }
+//        } while(acesso ==null);
+//		
+		// apartir do login, escolhe 1 menu
+//		switch (acesso) {
+//		case CargoEnum.CLIENTE.name():
 //			menuCliente(mapaUsuario.get(cpfInformado));
 //			break;
-//		case "Presidente":
+//		case CargoEnum.PRESIDENTE.name():
 //			menuPresidente();
 //			break;
-//		case "Gerente":
-//			menuPresidente();
+//		case CargoEnum.GERENTE.name():
+//			menuGerente();
 //			break;
-//		case "Diretor":
-//			menuPresidente();
+//		case CargoEnum.DIRETOR.name():
+//			menuDiretor();
 //			break;
 //		}
+//		
 //		&& mapaUsuarios.containsKey(senhaInformada)
 		//Função depositar (lucas ta dando uma olhada)
 //		int i=0;
