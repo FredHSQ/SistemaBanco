@@ -1,4 +1,4 @@
-package escritorLeitor;
+package applications;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -7,8 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
-import applications.Menu;
 
 public class EscritorLeitor {
 	public static void escritorMovimentacoes(String cpf, Integer agencia, Double valor, Double saldo, String indentificadorTransicao) throws IOException {
@@ -25,4 +23,17 @@ public class EscritorLeitor {
 		escritor.append(Menu.logo()+"\n");
 		escritor.close();
 	}
+	
+	public static void escritorRelatorioSaldo() throws IOException {
+	
+	}
+	
+	public static void escritorRelatorioTributacao() throws IOException {
+		
+	}
+	
+	public static void escritorRelatorioPoupanca() throws IOException {
+		
+	}
+	
 }

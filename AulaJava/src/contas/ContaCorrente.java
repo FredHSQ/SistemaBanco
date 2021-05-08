@@ -9,7 +9,8 @@ public class ContaCorrente extends Conta {
 		
 	}
 	
-	public ContaCorrente(String cpf, int agencia, double saldo) {
+	public ContaCorrente(String nome, String cpf, int agencia, double saldo) {
+		setNome(nome);
 		setCpf(cpf);
 		setAgencia(agencia);
 		setSaldo(saldo);
