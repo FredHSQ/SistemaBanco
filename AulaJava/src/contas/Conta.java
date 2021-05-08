@@ -59,7 +59,6 @@ public abstract class Conta {
 	//função para tranferir "valor" de dentro do "saldo" da conta chamada
 	//para uma conta destino
 	public void transfere (double valorTransfere, String cpf) {
-		Map<String, Usuario> mapaUsuario = new HashMap<>();
 		if (this.sacar(valorTransfere) == true) {
 			mapaUsuario.get(cpf).depositar(valorTransfere);
 			System.out.println("O valor "+ valorTransfere + " foi transferido!");
