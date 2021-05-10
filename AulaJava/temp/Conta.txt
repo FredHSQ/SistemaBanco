@@ -1,0 +1,3 @@
+Corrente;Lucas1;12345678910;1;100;
+Corrente;Fred1;12345678911;2;200;
+Corrente;Granato1;12345678912;3;300;

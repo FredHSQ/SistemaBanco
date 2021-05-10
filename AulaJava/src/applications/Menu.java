@@ -223,7 +223,7 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioQtdAgencia();
 				break;
 			case 5:
-				for (Conta value : MapConta.getMap().values()) {
+				for (Conta value : MapConta.getMapS().values()) {
 					System.out.println("\n"+value.getNome()+" "+value.getCpf()+" "+value.getAgencia());
 				}
 				
