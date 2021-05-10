@@ -21,24 +21,49 @@ import usuario.Presidente;
 import usuario.Usuario;
 
 public class EscritorLeitor {
-	public static void escritorMovimentacoes(String cpf, Integer agencia, Double valor, Double saldo,
-			String indentificadorTransicao) throws IOException {
-		BufferedWriter escritor = new BufferedWriter(new FileWriter("../temp/log.txt", true));
+	static final String PATH_BASICO = "./temp/";
+	static final String EXTENSAO = ".txt";
+	static DateTimeFormatter Format = DateTimeFormatter.ofPattern("ddMMyyyyss");
+	static String dateString = LocalDateTime.now().format(Format);
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
-		escritor.append("Tipo de transição: " + indentificadorTransicao + "\n");
-		escritor.append("CPF do titular: " + cpf + "\n");
-		escritor.append("Agencia da conta: " + String.valueOf(agencia) + "\n");
-		escritor.append("Custo da transação: R$00,10" + String.valueOf(valor) + "\n");
-		escritor.append("Valor da movimentação: R$" + String.valueOf(valor) + "\n");
-		escritor.append("Valor do saldo atual: R$" + String.valueOf(saldo) + "\n");
-		escritor.append("Data: " + String.valueOf(LocalDateTime.now().format(formatter)) + "\n");
+	public static void escritorMovimentacoes() throws IOException {
+		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
+		for (int i = 0; i < Conta.getQtdMovimentacao(); i++) {
+			// Isso significa que a movimentação realizada foi um deposito
+			if (Conta.getVetorTipoDaMovimentacao(i).equals("Deposito")) {
+				escritor.append("================Registro de Deposito================\n");
+				escritor.append("Realizador do deposito: " + Conta.getVetorCPF(i) + "\n");
+				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
+				escritor.append("Valor depositado: " + Conta.getVetorValor(i) + "\n");
+				escritor.append("Saldo apos o deposito: " + Conta.getVetorSaldo(i) + "\n");
+				escritor.append("Data da realização do deposito: " + Conta.getVetorTempo(i) + "\n\n");
+			}else if (Conta.getVetorTipoDaMovimentacao(i).equals("Saque")) {
+				escritor.append("================Registro de Saque================\n");
+				escritor.append("Realizador do Saque: " + Conta.getVetorCPF(i) + "\n");
+				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
+				escritor.append("Valor sacado: " + Conta.getVetorValor(i) + "\n");
+				escritor.append("Saldo apos o saque: " + Conta.getVetorSaldo(i) + "\n");
+				escritor.append("Data da realização do saque: " + Conta.getVetorTempo(i) + "\n\n");
+			}else if (Conta.getVetorTipoDaMovimentacao(i).equals("Transferencia")) {
+				escritor.append("================Registro de Transferencia================\n");
+				escritor.append("Realizador da transferencia: " + Conta.getVetorCPF(i) + "\n");
+				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
+				escritor.append("Valor transferido: " + Conta.getVetorValor(i) + "\n");
+				escritor.append("Saldo apos a transferencia: " + Conta.getVetorSaldo(i) + "\n");
+				escritor.append("Conta que receberá a transferência: " + Conta.getVetorCPFT(i) + "\n");
+				escritor.append("Data da realização da transferência: " + Conta.getVetorTempo(i) + "\n\n");
+			}
+		}
 		escritor.close();
 	}
 
-	public static void escritorRelatorioSaldo() throws IOException {
 
+	public static void escritorRelatorioSaldo(String nome, String cpf, double saldo) throws IOException {
+		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + EXTENSAO+"RSaldo"));
+		escritor.append("================Registro de Saldo================\n");
+		escritor.append("O seu saldo, " + nome + " é R$" + saldo);
+		escritor.append("Data da realização do deposito: " + dateString + "\n\n");
 	}
 
 	public static void escritorRelatorioTributacao() throws IOException {

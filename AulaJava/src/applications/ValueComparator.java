@@ -15,7 +15,6 @@ class ValueComparator implements Comparator<String> {
     // Note: this comparator imposes orderings that are inconsistent with
     // equals.
     public int compare(String a, String b) {
-    	System.out.println("É AQUI");
         return base.get(a).getNome().compareToIgnoreCase(base.get(b).getNome());
     }
 }

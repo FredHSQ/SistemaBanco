@@ -43,7 +43,7 @@ public class MapConta {
 			linha = buffRead.readLine();
 			if (linha != null) {
 				String[] lelinha = linha.split(";");
-				if (lelinha[0].equalsIgnoreCase("Poupança")) {
+				if (lelinha[0].equalsIgnoreCase("Poupanca")) {
 					Conta poupanca = new ContaPoupanca(lelinha[1], lelinha[2], Integer.parseInt(lelinha[3]), Double.parseDouble(lelinha[4]));
 					MapConta.getMap().put(lelinha[2], poupanca);
 				} else if (lelinha[0].equalsIgnoreCase("Corrente")) {

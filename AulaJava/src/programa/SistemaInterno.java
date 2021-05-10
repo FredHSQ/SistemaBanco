@@ -17,6 +17,8 @@ public class SistemaInterno {
 		Menu.bemVindo();
 		
 		MapConta.leitorConta("../temp/Conta.txt");
+		MapUsuario.leitorUsuario("../temp/Usuario.txt");
+		
 		// processo de login
 		String acesso = null;
 		String cpfInformado;

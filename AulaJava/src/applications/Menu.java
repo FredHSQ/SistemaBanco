@@ -53,7 +53,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
-				EscritorLeitor.escritorRelatorioSaldo();
+				EscritorLeitor.escritorRelatorioSaldo(conta.getCpf(),conta.getNome(), conta.getSaldo());
 				break;
 			case 2:
 				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
@@ -117,7 +117,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
-				EscritorLeitor.escritorRelatorioSaldo();
+				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
 				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$" + conta.getQtdMovimentacao()*0.10);
@@ -189,7 +189,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
-				EscritorLeitor.escritorRelatorioSaldo();
+				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
 				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
@@ -254,6 +254,7 @@ public class Menu {
 				menuRelatoriosPresidente(conta);
 				break;
 			case 3:
+				EscritorLeitor.escritorMovimentacoes();
 				i = 2;
 				break;
 			}
@@ -272,7 +273,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
-				EscritorLeitor.escritorRelatorioSaldo();
+				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
 				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
