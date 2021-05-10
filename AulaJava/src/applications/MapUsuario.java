@@ -11,7 +11,7 @@ import usuario.Usuario;
 public class MapUsuario {
 	
 	static Gerente g1 = new Gerente("123456","12345678910",1);
-	static Gerente g2 = new Gerente("paodequeijo","12345678911",2);
+	static Gerente g2 = new Gerente("paodequeijo","12345678911",3);
 	static Gerente g3 = new Gerente("lasanhamilanesa","12345678912",3);
 
     public static Map<String, Usuario> mapaUsuario = new HashMap<>();

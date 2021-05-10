@@ -26,6 +26,7 @@ public class SistemaInterno {
 		// processo de login
 		String acesso = null;
 		String cpfInformado;
+
 		
 		do {
             System.out.println("Por favor informe o CPF: ");
@@ -46,14 +47,16 @@ public class SistemaInterno {
 		case CargoEnum.CLIENTE.name():
 			Menu.menuCLiente(MapConta.getMap().get(cpfInformado));
 			break;
-		case CargoEnum.PRESIDENTE.name():
-			menuPresidente();
-			break;
-		case CargoEnum.GERENTE.name():
-			menuGerente();
-			break;
-		case CargoEnum.DIRETOR.name():
-			menuDiretor();
+//		case CargoEnum.PRESIDENTE.name():
+//			menuPresidente();
+//			break;
+//		case CargoEnum.GERENTE.name():
+//			Menu.menuGerente(MapConta.getMap().get(cpfInformado));
+//			break;
+//		case CargoEnum.DIRETOR.name():
+//			menuDiretor();
+//			break;
+		default:
 			break;
 		}		
 		sc.close();

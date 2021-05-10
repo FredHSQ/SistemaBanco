@@ -1,6 +1,8 @@
 package applications;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -42,7 +44,7 @@ public class Menu {
 		}while(i!=2);
 	}
 	
-	//função para criação do menu movimentaçãos
+	//função para criação do menu de relatórios do cliente
 	public static void menuRelatoriosCliente(Conta conta) throws IOException {
 		int i = 1;
 		do {
@@ -73,8 +75,79 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioPoupanca();
 				break;
 			case 4:
+				i=2;
 				break;
 			}	
+		}while (i!=2);
+		
+	}
+	
+	//função para criação do menu Gerente
+		public static void menuGerente(Conta conta) throws ContaExceptions, IOException {
+			int i = 1;
+			do {
+			System.out.println(
+					"Bem vindo gerente, "+ conta.getNome() +"!\nOque você gostaria de fazer?\n1 - Movimentações\n2 - Relátorios\n3 - Sair");
+			int opcao = sc.nextInt();
+			Menu.linha("Oque você gostaria de fazer?");
+			switch (opcao) {
+			case 1:
+				menuMovimentacao(conta);
+				break;
+			case 2:
+				menuRelatoriosGerente(conta);
+				break;
+			case 3:
+				i=2;
+				break;
+			}
+			}while(i!=2);
+		}
+		
+		
+	//função para criação do menu de relatórios do gerente
+	public static void menuRelatoriosGerente(Conta conta) throws IOException {
+		int i = 1;
+		do {
+			System.out.println(
+					"Você gostaria de fazer qual tipo de relatório?\n1 - Saldo\n2 - Relatório de tributação\n3 - Simulação rendimento poupança\n4 - Número de contas da agencia\n5 - Sair");
+			int opcao = sc.nextInt();
+			Menu.linha("Você gostaria de fazer qual tipo de relatório?");
+			switch (opcao) {
+			case 1:
+				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
+				EscritorLeitor.escritorRelatorioSaldo();
+				break;
+			case 2:
+				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$" + conta.getQtdMovimentacao()*0.10);
+				EscritorLeitor.escritorRelatorioTributacao();
+				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
+				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
+				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				break;
+			case 3:
+				System.out.println("Você selecionou fazer uma simulação rendimento poupança.");
+				System.out.printf("Por favor, digite o valor que quer colocar na poupança:\nR$");
+				double valor = sc.nextDouble();
+				System.out.println("Por favor, digite o valor de dias que o dinheiro ficará na poupança: ");
+				double dias = sc.nextInt();
+				System.out.println("Depositando R$" + valor + " por "+ dias + " você terá um rendimento de R$" + valor*dias*0.003/30 +"!");
+				System.out.println("O relatório de simulação rendimento poupança foi gerado.");
+				EscritorLeitor.escritorRelatorioPoupanca();
+				break;
+			case 4:
+				int count = 0;
+				for(Conta value : MapConta.getMap().values()) {
+				  if (value.getAgencia()==conta.getAgencia()) {
+				    count++;
+				  }
+				}
+				System.out.println("\nA quantidade de contas na agencia " + conta.getAgencia() + " é: " + count);
+				break;
+			case 5:
+				i=2;
+				break;
+			}
 		}while (i!=2);
 		
 	}

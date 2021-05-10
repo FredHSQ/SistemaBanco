@@ -9,7 +9,7 @@ import contas.ContaCorrente;
 public class MapConta {
 
     static Conta conta1 = new ContaCorrente("Lucas","12345678910", 1, 100);
-    static Conta conta2 = new ContaCorrente("Fred","12345678911", 2, 200);
+    static Conta conta2 = new ContaCorrente("Fred","12345678911", 3, 200);
     static Conta conta3 = new ContaCorrente("Granato","12345678912", 3, 300);
 
     public static Map<String,Conta> mapaConta = new HashMap<String, Conta>();
