@@ -62,7 +62,7 @@ public class MapConta {
         return mapaConta;
     }
     public static Map<String, Conta> getMapS() {
-        
+        sorted_map.putAll(mapaConta);
         return sorted_map;
     }
 }
