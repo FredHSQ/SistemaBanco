@@ -35,5 +35,14 @@ public class EscritorLeitor {
 	public static void escritorRelatorioPoupanca() throws IOException {
 		
 	}
+	public static void escritorRelatorioQtdAgencia() throws IOException {
+		
+	}
+	public static void escritorRelatorioTodasContas() throws IOException {
+		
+	}
+	public static void escritorRelatorioSaldoTotalBanco() throws IOException {
+		
+	}
 	
 }

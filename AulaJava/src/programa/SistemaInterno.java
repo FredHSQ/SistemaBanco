@@ -3,17 +3,11 @@ package programa;
 import java.io.IOException;
 import java.util.*;
 
-import applications.EscritorLeitor;
 import applications.MapConta;
 import applications.MapUsuario;
 import applications.Menu;
 import bancoEnum.CargoEnum;
-import contas.Conta;
-import contas.ContaCorrente;
-import contas.ContaPoupanca;
 import exceptions.ContaExceptions;
-import usuario.Gerente;
-import usuario.Usuario;
 
 public class SistemaInterno {
 
@@ -26,7 +20,6 @@ public class SistemaInterno {
 		// processo de login
 		String acesso = null;
 		String cpfInformado;
-
 		
 		do {
             System.out.println("Por favor informe o CPF: ");
@@ -36,29 +29,21 @@ public class SistemaInterno {
             if(MapUsuario.getMap().containsKey(cpfInformado) && MapUsuario.getMap().get(cpfInformado).getSenha().equals(senhaInformada)) {
                 System.out.println("Login concluído");
                 Menu.linha("Por favor informe a senha: ");
-                acesso= MapUsuario.getMap().get(cpfInformado).getCargo();
+                acesso = MapUsuario.getMap().get(cpfInformado).getCargo();
             }else {
                 System.out.println("Senha e CPF não correspondem a nenhum usuario.");
             }
         } while(acesso ==null);
 		
-		// a partir do login, escolhe 1 menu
-		switch (acesso) {
-		case CargoEnum.CLIENTE.name():
-			Menu.menuCLiente(MapConta.getMap().get(cpfInformado));
-			break;
-//		case CargoEnum.PRESIDENTE.name():
-//			menuPresidente();
-//			break;
-//		case CargoEnum.GERENTE.name():
-//			Menu.menuGerente(MapConta.getMap().get(cpfInformado));
-//			break;
-//		case CargoEnum.DIRETOR.name():
-//			menuDiretor();
-//			break;
-		default:
-			break;
-		}		
+		if(acesso.equals(CargoEnum.CLIENTE.name())) {
+            Menu.menuCLiente(MapConta.getMap().get(cpfInformado));
+        }else if (acesso.equals(CargoEnum.DIRETOR.name())) {
+            Menu.menuDiretor(MapConta.getMap().get(cpfInformado));
+        }else if(acesso.equals(CargoEnum.PRESIDENTE.name())) {
+            Menu.menuPresidente(MapConta.getMap().get(cpfInformado));
+        }else if(acesso.equals(CargoEnum.GERENTE.name())) {
+            Menu.menuGerente(MapConta.getMap().get(cpfInformado));
+        }	
 		sc.close();
 	}
 

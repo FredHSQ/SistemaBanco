@@ -7,7 +7,7 @@ public class Diretor extends Usuario {
 	public Diretor() {
 		setCargo(CargoEnum.DIRETOR.name());
 	}
-	public Diretor(String senha, String cpf, String cargo) {
+	public Diretor(String senha, String cpf) {
 		setCpf(cpf);
 		setSenha(senha);
 		setCargo(CargoEnum.DIRETOR.name());

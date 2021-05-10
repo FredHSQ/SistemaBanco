@@ -9,7 +9,7 @@ public class Presidente extends Usuario {
 		setCargo(CargoEnum.PRESIDENTE.name());
 	}
 	
-	public Presidente (String senha, String cpf, String cargo) {
+	public Presidente (String senha, String cpf) {
 		setCpf(cpf);
 		setSenha(senha);
 		setCargo(CargoEnum.PRESIDENTE.name());
