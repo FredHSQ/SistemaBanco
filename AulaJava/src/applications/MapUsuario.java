@@ -46,16 +46,16 @@ public class MapUsuario {
 			if (linha != null) {
 				String[] lelinha = linha.split(";");
 				if(lelinha[0].equalsIgnoreCase(CargoEnum.CLIENTE.name())) {
-					Usuario cliente = new Cliente(lelinha[1],lelinha[2]);
+					Usuario cliente = new Cliente(lelinha[2],lelinha[1]);
 					MapUsuario.getMap().put(lelinha[1], cliente);
 				}else if(lelinha[0].equalsIgnoreCase(CargoEnum.GERENTE.name())) {
-					Usuario gerente = new Gerente(lelinha[1],lelinha[2],Integer.parseInt(lelinha[3]));
+					Usuario gerente = new Gerente(lelinha[2],lelinha[1],Integer.parseInt(lelinha[3]));
 					MapUsuario.getMap().put(lelinha[1], gerente);
 				}else if(lelinha[0].equalsIgnoreCase(CargoEnum.DIRETOR.name())) {
-					Usuario diretor = new Diretor(lelinha[1],lelinha[2]);
+					Usuario diretor = new Diretor(lelinha[2],lelinha[1]);
 					MapUsuario.getMap().put(lelinha[1], diretor);
 				}else if(lelinha[0].equalsIgnoreCase(CargoEnum.PRESIDENTE.name())) {
-					Usuario presidente = new Presidente(lelinha[1],lelinha[2]);
+					Usuario presidente = new Presidente(lelinha[2],lelinha[1]);
 					MapUsuario.getMap().put(lelinha[1], presidente);
 				}
 			} else

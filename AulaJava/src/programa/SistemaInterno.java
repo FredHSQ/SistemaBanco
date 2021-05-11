@@ -16,15 +16,15 @@ public class SistemaInterno {
 		System.out.println(Menu.logo());
 		Menu.bemVindo();
 		
-		MapConta.leitorConta("../temp/Conta.txt");
-		MapUsuario.leitorUsuario("../temp/Usuario.txt");
+		MapConta.leitorConta("./temp/Conta.txt");
+		MapUsuario.leitorUsuario("./temp/Usuario.txt");
 		
 		// processo de login
 		String acesso = null;
 		String cpfInformado;
-		
-		do {
-            System.out.println("Por favor informe o CPF: ");
+
+		do {       
+			System.out.println("Por favor informe o CPF: ");
             cpfInformado = sc.next();
             System.out.println("Por favor informe a senha: ");
             String senhaInformada =sc.next();
