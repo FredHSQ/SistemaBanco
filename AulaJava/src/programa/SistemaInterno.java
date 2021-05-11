@@ -16,8 +16,8 @@ public class SistemaInterno {
 		System.out.println(Menu.logo());
 		Menu.bemVindo();
 		
-		MapConta.leitorConta("./temp/Conta.txt");
-		MapUsuario.leitorUsuario("./temp/Usuario.txt");
+		MapConta.leitorConta("../temp/Conta.txt");
+		MapUsuario.leitorUsuario("../temp/Usuario.txt");
 		
 		// processo de login
 		String acesso = null;

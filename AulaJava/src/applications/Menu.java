@@ -1,6 +1,7 @@
 package applications;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import contas.Conta;
@@ -23,7 +24,7 @@ public class Menu {
 	public static void menuCLiente(Conta conta) throws ContaExceptions, IOException {
 		int i = 1;
 		do {
-			System.out.println("\nBem vindo, " + conta.getNome()
+			System.out.println("\nBem vinda(o), " + conta.getNome()
 					+ "!\nO que você gostaria de fazer?\n1 - Movimentações\n2 - Relátorios\n3 - Sair");
 			int opcao = sc.nextInt();
 			Menu.linha("Oque você gostaria de fazer?");
@@ -35,8 +36,12 @@ public class Menu {
 				menuRelatoriosCliente(conta);
 				break;
 			case 3:
+				EscritorLeitor.escritorMovimentacoes();
 				i = 2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");	
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		} while (i != 2);
 	}
@@ -52,7 +57,8 @@ public class Menu {
 			System.out.println();
 			switch (opcao) {
 			case 1:
-				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
+				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo()+ ".");
+				Menu.linha("O relatório de saldo foi gerado!");
 				EscritorLeitor.escritorRelatorioSaldo(conta.getCpf(),conta.getNome(), conta.getSaldo());
 				break;
 			case 2:
@@ -61,7 +67,8 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioTributacao();
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
-				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
+				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
 				System.out.println("Você selecionou fazer uma simulação rendimento poupança.");
@@ -73,11 +80,14 @@ public class Menu {
 						+ valor * dias * 0.003 / 30 + "!");
 				System.out.println("O relatório de simulação rendimento poupança foi gerado.");
 				linha("O relatório de simulação rendimento poupança foi gerado.");
-				EscritorLeitor.escritorRelatorioPoupanca();
+				EscritorLeitor.escritorRelatorioPoupanca(valor, dias);
 				break;
 			case 4:
 				i = 2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");	
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		} while (i != 2);
 
@@ -87,7 +97,7 @@ public class Menu {
 	public static void menuGerente(Conta conta) throws ContaExceptions, IOException {
 		int i = 1;
 		do {
-			System.out.println("\nBem vindo Gerente, " + conta.getNome()
+			System.out.println("\nBem vinda(o) Gerente, " + conta.getNome()
 					+ "!\nO que você gostaria de fazer?\n1 - Movimentações\n2 - Relátorios\n3 - Sair");
 			int opcao = sc.nextInt();
 			Menu.linha("Oque você gostaria de fazer?");
@@ -99,8 +109,12 @@ public class Menu {
 				menuRelatoriosGerente(conta);
 				break;
 			case 3:
+				EscritorLeitor.escritorMovimentacoes();
 				i = 2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");	
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		} while (i != 2);
 	}
@@ -117,6 +131,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
+				Menu.linha("O relatório de saldo foi gerado!");
 				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
@@ -125,6 +140,7 @@ public class Menu {
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
 				System.out.println("Você selecionou fazer uma simulação rendimento poupança.");
@@ -135,7 +151,7 @@ public class Menu {
 				System.out.println("Depositando R$" + valor + " por " + dias + " dias, você terá um rendimento de R$" + valor*dias*0.003/30 +"!");
 				System.out.println("O relatório de simulação rendimento poupança foi gerado.");
 				linha("O relatório de simulação rendimento poupança foi gerado.");
-				EscritorLeitor.escritorRelatorioPoupanca();
+				EscritorLeitor.escritorRelatorioPoupanca(valor, dias);
 				break;
 			case 4:
 				int count = 0;
@@ -146,11 +162,14 @@ public class Menu {
 				}
 				System.out.println("\nA quantidade de contas na agencia " + conta.getAgencia() + " é: " + count);
 				linha("A quantidade de contas na agencia 3 é: 10");
-				EscritorLeitor.escritorRelatorioQtdAgencia();
+				EscritorLeitor.escritorRelatorioQtdAgencia(count, conta.getAgencia());
 				break;
 			case 5:
 				i=2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");	
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		}while (i!=2);
 	}
@@ -159,7 +178,7 @@ public class Menu {
 	public static void menuDiretor(Conta conta) throws ContaExceptions, IOException {
 		int i = 1;
 		do {
-			System.out.println("\nBem vindo Diretor, " + conta.getNome()
+			System.out.println("\nBem vinda(o) Diretora(o), " + conta.getNome()
 					+ "!\nO que você gostaria de fazer?\n1 - Movimentações\n2 - Relátorios\n3 - Sair");
 			int opcao = sc.nextInt();
 			Menu.linha("Oque você gostaria de fazer?");
@@ -171,8 +190,12 @@ public class Menu {
 				menuRelatoriosDiretor(conta);
 				break;
 			case 3:
+				EscritorLeitor.escritorMovimentacoes();
 				i = 2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");	
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		} while (i != 2);
 	}
@@ -189,6 +212,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
+				Menu.linha("O relatório de saldo foi gerado!");
 				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
@@ -198,6 +222,7 @@ public class Menu {
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
 				System.out.println("Você selecionou fazer uma simulação rendimento poupança.");
@@ -209,7 +234,7 @@ public class Menu {
 						+ valor * dias * 0.003 / 30 + "!");
 				System.out.println("O relatório de simulação rendimento poupança foi gerado.");
 				linha("O relatório de simulação rendimento poupança foi gerado.");
-				EscritorLeitor.escritorRelatorioPoupanca();
+				EscritorLeitor.escritorRelatorioPoupanca(valor, dias);
 				break;
 			case 4:
 				int count = 0;
@@ -220,13 +245,12 @@ public class Menu {
 				}
 				System.out.println("\nA quantidade de contas na agencia " + conta.getAgencia() + " é: " + count);
 				linha("A quantidade de contas na agencia 3 é: 10");
-				EscritorLeitor.escritorRelatorioQtdAgencia();
+				EscritorLeitor.escritorRelatorioQtdAgencia(count, conta.getAgencia());
 				break;
 			case 5:
 				for (Conta value : MapConta.getMapS().values()) {
 					System.out.println("\n"+value.getNome()+" "+value.getCpf()+" "+value.getAgencia());
 				}
-				
 				linha("A quantidade de contas na agencia 3 é: 10");
 				System.out.println();
 				EscritorLeitor.escritorRelatorioTodasContas();
@@ -234,6 +258,9 @@ public class Menu {
 			case 6:
 				i = 2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		} while (i != 2);
 	}
@@ -242,7 +269,7 @@ public class Menu {
 	public static void menuPresidente(Conta conta) throws ContaExceptions, IOException {
 		int i = 1;
 		do {
-			System.out.println("\nBem vindo Presidente, " + conta.getNome()
+			System.out.println("\nBem vinda(o) Presidente, " + conta.getNome()
 					+ "!\nO que você gostaria de fazer?\n1 - Movimentações\n2 - Relátorios\n3 - Sair");
 			int opcao = sc.nextInt();
 			Menu.linha("Oque você gostaria de fazer?");
@@ -257,11 +284,14 @@ public class Menu {
 				EscritorLeitor.escritorMovimentacoes();
 				i = 2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");	
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		} while (i != 2);
 	}
 
-	// função para criação do menu de relatórios do Diretor
+	// função para criação do menu de relatórios do Presidente
 	public static void menuRelatoriosPresidente(Conta conta) throws IOException {
 		int i = 1;
 		do {
@@ -273,6 +303,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("O relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo());
+				Menu.linha("O relatório de saldo foi gerado!");
 				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
@@ -282,6 +313,7 @@ public class Menu {
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
 				System.out.println("Você selecionou fazer uma simulação rendimento poupança.");
@@ -293,7 +325,7 @@ public class Menu {
 						+ valor * dias * 0.003 / 30 + "!");
 				System.out.println("O relatório de simulação rendimento poupança foi gerado.");
 				linha("O relatório de simulação rendimento poupança foi gerado.");
-				EscritorLeitor.escritorRelatorioPoupanca();
+				EscritorLeitor.escritorRelatorioPoupanca(valor, dias);
 				break;
 			case 4:
 				int count = 0;
@@ -304,7 +336,7 @@ public class Menu {
 				}
 				System.out.println("\nA quantidade de contas na agencia " + conta.getAgencia() + " é: " + count);
 				linha("A quantidade de contas na agencia 3 é: 10");
-				EscritorLeitor.escritorRelatorioQtdAgencia();
+				EscritorLeitor.escritorRelatorioQtdAgencia(count, conta.getAgencia());
 				break;
 			case 5:
 				for (Conta value : MapConta.getMapS().values()) {
@@ -322,12 +354,15 @@ public class Menu {
 				}
 				System.out.println("\nO valor total, em todas as contas do banco, é de: R$"+ sum);
 				linha("\nO valor total, em todas as contas do banco, é de: R$12345678910");
-				EscritorLeitor.escritorRelatorioSaldoTotalBanco();
+				EscritorLeitor.escritorRelatorioSaldoTotalBanco(sum);
 				System.out.println();
 				break;
 			case 7:
 				i = 2;
 				break;
+			default: 
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");	
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
 			}
 		} while (i != 2);
 	}
@@ -342,14 +377,15 @@ public class Menu {
 			Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
 			switch (opcao) {
 			case 1:
-				System.out.println("\nDigite o valor que gostaria de depositar: ");
-				Double valor = sc.nextDouble();
-				Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
-				System.out.println();
 				try {
+					System.out.println("\nDigite o valor que gostaria de depositar: ");
+					Double valor = sc.nextDouble();
+					Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
+					System.out.println();
 					conta.depositar(valor);
 					System.out.println("\nGostaria de realizar outra transação?\n1 - Sim\n2 - Não");
 					i = sc.nextInt();
+					Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
 					if (i != 1 && i != 2) {
 						System.out.println("O valor digitado não é válido. Repita por favor.");
 						Menu.linha("O valor digitado não é válido. Repita por favor.");
@@ -358,17 +394,22 @@ public class Menu {
 					}
 				} catch (ContaExceptions e) {
 					System.out.println(e);
+					linha("exceptions.ContaExcepetions: Erro encontrado: Valor de deposito menor ou igual a 0");
+				} catch (Exception e) {
+					System.out.println("Valor digitado inválido. Por favor tente novamente. "+e);
+					linha("exceptions.ContaExcepetions: Erro encontrado: Valor de deposito menor ou igual a 0");
 				}
 				break;
 			case 2:
-				System.out.println("\nDigite o valor que gostaria de sacar: ");
-				valor = sc.nextDouble();
-				Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
-				System.out.println();
 				try {
+					System.out.println("\nDigite o valor que gostaria de sacar: ");
+					double valor = sc.nextDouble();
+					Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
+					System.out.println();
 					conta.sacar(valor);
 					System.out.println("\nGostaria de realizar outra transação?\n1 - Sim\n2 - Não");
 					i = sc.nextInt();
+					Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
 					if (i != 1 && i != 2) {
 						System.out.println("O valor digitado não é válido. Repita por favor.");
 						Menu.linha("O valor digitado não é válido. Repita por favor.");
@@ -380,28 +421,38 @@ public class Menu {
 				}
 				break;
 			case 3:
-				System.out.println("\nDigite o valor que gostaria de transferir: ");
-				valor = sc.nextDouble();
-				System.out.println("Digite o cpf da conta que gostaria de transferir para: ");
-				String cpf = sc.next();
-				Menu.linha("Digite o cpf da conta que gostaria de transferir para: ");
-				System.out.println();
+				try {
+					System.out.println("\nDigite o valor que gostaria de transferir: ");
+					double valor = sc.nextDouble();
+					System.out.println("Digite o cpf da conta que gostaria de transferir para: ");
+					String cpf = sc.next();
+					Menu.linha("Digite o cpf da conta que gostaria de transferir para: ");
+					System.out.println();
 					conta.transfere(valor, cpf);
 					System.out.println("\nGostaria de realizar outra transação?\n1 - Sim\n2 - Não");
 					i = sc.nextInt();
+					Menu.linha("Você gostaria de fazer qual tipo de movimentação?");
 					if (i != 1 && i != 2) {
 						System.out.println("O valor digitado não é válido. Repita por favor.");
 						Menu.linha("O valor digitado não é válido. Repita por favor.");
 						System.out.println();
 						i = 1;
 					}
+				} catch (ContaExceptions e) {
+					System.out.println(e);
+					linha("exceptions.ContaExcepetions: Erro encontrado: Valor de deposito menor ou igual a 0");
+				} catch (Exception e) {
+					System.out.println("Valor digitado inválido. Por favor tente novamente.");
+					linha("exceptions.ContaExcepetions: Erro encontrado: Valor de deposito menor ou igual a 0");
+				}
 				break;
 			case 4:
 				i = 2;
 				break;
-			default: 
-				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");				
-			}	
+			default:
+				System.out.println("\nFoi digitado um valor inválido, por favor repita a operação!");
+				linha("\nFoi digitado um valor inválido, por favor repita a operação!");
+			}
 		} while (i != 2);
 	}
 	
@@ -422,8 +473,6 @@ public class Menu {
 				+ "    @@@@@@@@@@@@@.@@@@@@@@@@@@@      \r\n"
 				+ "                                ");
 	}
-	
-	
 	
 	//função para criação de linhas, usar como variável a maior frase impressa sem "\n"
 	public static void linha(String maiorFraseMenu) {

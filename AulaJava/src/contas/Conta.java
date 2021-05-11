@@ -37,7 +37,6 @@ public abstract class Conta {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy"); 
 		
 		if(valor <= 0) {
-			 ;   
 			 throw new ContaExceptions(Menu.erroMenu() + "Valor de deposito menor ou igual a 0\n");
 		} else {
 			System.out.printf("O saldo era: R$%.2f\n",this.saldo);	
@@ -62,6 +61,7 @@ public abstract class Conta {
 		if (this.saldo<valor+0.10) {
 			System.out.println("O valor requerido mais o custo da movimentação é maior que o saldo atual (" + this.saldo + 
 					") da conta.");
+			Menu.linha("O valor requerido mais o custo da movimentação é maior que o saldo atual (100000000) da conta.");
 			return false;
 		}else {
 			System.out.printf("O saldo era: R$%.2f\n",this.saldo);	
@@ -86,19 +86,27 @@ public abstract class Conta {
 	public void transfere(double valorTransfere, String cpf) throws ContaExceptions, IOException {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy"); 
 		if (this.saldo<valorTransfere+0.20) {
-			;
 			throw new ContaExceptions(Menu.erroMenu() + "Valor de transferencia + o valor da movimentação é maior do que o saldo atual da conta.\n");
 		} else {
 			System.out.printf("O saldo era: R$%.2f\n", this.saldo);
 			System.out.printf("O custo da movimentação é: R$0,20\n");
 			this.saldo = this.saldo - valorTransfere - 0.20;
 			MapConta.getMap().get(cpf).setSaldo(MapConta.getMap().get(cpf).getSaldo() + valorTransfere);
-			qtdMovimentacao=qtdMovimentacao+2;
+			qtdMovimentacao++;
 			System.out.printf("O novo saldo é: R$%.2f\n", this.saldo);
 			System.out.println("O valor de R$" + valorTransfere + " foi transferido para conta que tem como titular: "
 					+ MapConta.getMap().get(cpf).getNome() + "!");
 			Menu.linha("Digite o cpf da conta que gostaria de transferir dsadsadsadsadsadsadsadsadsad");
-			vetorTipoDaMovimentacao[qtdMovimentacao] = "Saque";
+			vetorTipoDaMovimentacao[qtdMovimentacao] = "Transferencia";
+	        vetorCPF[qtdMovimentacao] = this.getCpf();
+	        vetorCPFT[qtdMovimentacao] = MapConta.getMap().get(cpf).getCpf();
+	        vetorAgencia[qtdMovimentacao] = (String.valueOf(this.getAgencia())) ;
+	        vetorValor[qtdMovimentacao] = (String.valueOf(valorTransfere));
+	        vetorSaldo[qtdMovimentacao] = (String.valueOf(this.getSaldo())); 
+	        vetorTempo[qtdMovimentacao] = LocalDateTime.now().format(formatter);
+	        // 
+	        qtdMovimentacao++;
+	        vetorTipoDaMovimentacao[qtdMovimentacao] = "0";
 	        vetorCPF[qtdMovimentacao] = this.getCpf();
 	        vetorCPFT[qtdMovimentacao] = MapConta.getMap().get(cpf).getCpf();
 	        vetorAgencia[qtdMovimentacao] = (String.valueOf(this.getAgencia())) ;
