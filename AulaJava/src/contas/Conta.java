@@ -32,19 +32,19 @@ public abstract class Conta {
     private static String vetorSaldo[] = new String[100];
     private static String vetorTempo[] = new String[100];
 	
-	//função para depositar "valor" dentro do "saldo" da conta chamada
+	//funï¿½ï¿½o para depositar "valor" dentro do "saldo" da conta chamada
 	public void depositar (Double valor) throws ContaExceptions, IOException {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy"); 
 		
 		if(valor <= 0) {
-			 throw new ContaExceptions(Menu.erroMenu() + "Valor de deposito menor ou igual a 0\n");
+			 throw new ContaExceptions(Menu.erroMenu() + "Valor de deposito menor \nou igual a 0\n");
 		} else {
 			System.out.printf("O saldo era: R$%.2f\n",this.saldo);	
-			System.out.printf("O custo da movimentação é: R$0,10\n");
+			System.out.printf("O custo da movimentaï¿½ï¿½o ï¿½: R$0,10\n");
 			System.out.printf("O valor depositado foi de: R$%.2f\n",valor);
 			this.saldo = this.saldo+valor-0.10;
-			System.out.printf("O novo saldo é: R$%.2f\n",this.saldo);
-			Menu.linha("Digite o cpf da conta que gostaria de transferir ");
+			System.out.printf("O novo saldo ï¿½: R$%.2f\n",this.saldo);
+			Menu.linha();
             vetorTipoDaMovimentacao[qtdMovimentacao] = "Deposito";
             vetorCPF[qtdMovimentacao] = this.getCpf();
             vetorAgencia[qtdMovimentacao] = (String.valueOf(this.getAgencia())) ;
@@ -55,21 +55,21 @@ public abstract class Conta {
 		}
 	}
 	
-	//função para sacar "valor" de dentro do "saldo" da conta chamada
+	//funï¿½ï¿½o para sacar "valor" de dentro do "saldo" da conta chamada
 	public boolean sacar (double valor) throws ContaExceptions, IOException {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy"); 
 		if (this.saldo<valor+0.10) {
-			System.out.println("O valor requerido mais o custo da movimentação é maior que o saldo atual (" + this.saldo + 
+			System.out.println("O valor requerido mais o custo \nda movimentaï¿½ï¿½o ï¿½ maior que o saldo atual (" + this.saldo + 
 					") da conta.");
-			Menu.linha("O valor requerido mais o custo da movimentação é maior que o saldo atual (100000000) da conta.");
+			Menu.linha();
 			return false;
 		}else {
 			System.out.printf("O saldo era: R$%.2f\n",this.saldo);	
-			System.out.printf("O custo da movimentação é: R$0,10\n");
+			System.out.printf("O custo da movimentaï¿½ï¿½o ï¿½: R$0,10\n");
 			System.out.printf("O valor sacado foi de: R$%.2f\n",valor);
 			this.saldo = this.saldo-valor-0.10;
-			System.out.printf("O novo saldo é: R$%.2f\n",this.saldo);
-			Menu.linha("Digite o cpf da conta que gostaria de transferir ");
+			System.out.printf("O novo saldo ï¿½: R$%.2f\n",this.saldo);
+			Menu.linha();
 			vetorTipoDaMovimentacao[qtdMovimentacao] = "Saque";
 	        vetorCPF[qtdMovimentacao] = this.getCpf();
 	        vetorAgencia[qtdMovimentacao] = (String.valueOf(this.getAgencia())) ;
@@ -81,22 +81,22 @@ public abstract class Conta {
 		}
 	}	
 	
-	//função para tranferir "valor" de dentro do "saldo" da conta chamada
+	//funï¿½ï¿½o para tranferir "valor" de dentro do "saldo" da conta chamada
 	//para uma conta destino
 	public void transfere(double valorTransfere, String cpf) throws ContaExceptions, IOException {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy"); 
 		if (this.saldo<valorTransfere+0.20) {
-			throw new ContaExceptions(Menu.erroMenu() + "Valor de transferencia + o valor da movimentação é maior do que o saldo atual da conta.\n");
+			throw new ContaExceptions(Menu.erroMenu() + "\nValor de transferencia mais \no valor da movimentaï¿½ï¿½o ï¿½ maior \ndo que o saldo atual da conta.\n");
 		} else {
 			System.out.printf("O saldo era: R$%.2f\n", this.saldo);
-			System.out.printf("O custo da movimentação é: R$0,20\n");
+			System.out.printf("O custo da movimentaï¿½ï¿½o ï¿½: R$0,20\n");
 			this.saldo = this.saldo - valorTransfere - 0.20;
 			MapConta.getMap().get(cpf).setSaldo(MapConta.getMap().get(cpf).getSaldo() + valorTransfere);
 			
-			System.out.printf("O novo saldo é: R$%.2f\n", this.saldo);
-			System.out.println("O valor de R$" + valorTransfere + " foi transferido para conta que tem como titular: "
+			System.out.printf("O novo saldo ï¿½: R$%.2f\n", this.saldo);
+			System.out.println("O valor de R$" + valorTransfere + " foi transferido \npara conta que tem como titular: "
 					+ MapConta.getMap().get(cpf).getNome() + "!");
-			Menu.linha("Digite o cpf da conta que gostaria de transferir dsadsadsadsadsadsadsadsadsad");
+			Menu.linha();
 			vetorTipoDaMovimentacao[qtdMovimentacao] = "Transferencia";
 	        vetorCPF[qtdMovimentacao] = this.getCpf();
 	        vetorCPFT[qtdMovimentacao] = MapConta.getMap().get(cpf).getNome();

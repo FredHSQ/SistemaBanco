@@ -16,8 +16,8 @@ public class SistemaInterno {
 		System.out.println(Menu.logo());
 		Menu.bemVindo();
 		
-		MapConta.leitorConta("../temp/Conta.txt");
-		MapUsuario.leitorUsuario("../temp/Usuario.txt");
+		MapConta.leitorConta("./temp/Conta.txt");
+		MapUsuario.leitorUsuario("./temp/Usuario.txt");
 		
 		// processo de login
 		String acesso = null;
@@ -29,11 +29,11 @@ public class SistemaInterno {
             System.out.println("Por favor informe a senha: ");
             String senhaInformada =sc.next();
             if(MapUsuario.getMap().containsKey(cpfInformado) && MapUsuario.getMap().get(cpfInformado).getSenha().equals(senhaInformada)) {
-                System.out.println("Login concluído");
-                Menu.linha("Por favor informe a senha: ");
+                System.out.println("Login concluï¿½do");
+                Menu.linha();
                 acesso = MapUsuario.getMap().get(cpfInformado).getCargo();
             }else {
-                System.out.println("Senha e CPF não correspondem a nenhum usuario.");
+                System.out.println("Senha e CPF nï¿½o correspondem \na nenhum usuario.");
             }
         } while(acesso ==null);
 		

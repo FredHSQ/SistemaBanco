@@ -1,27 +1,16 @@
 package applications;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-import bancoEnum.CargoEnum;
 import contas.Conta;
-import contas.ContaCorrente;
-import contas.ContaPoupanca;
-import usuario.Cliente;
-import usuario.Diretor;
-import usuario.Gerente;
-import usuario.Presidente;
-import usuario.Usuario;
 
 public class EscritorLeitor {
-	static final String PATH_BASICO = "../temp/";
+	static final String PATH_BASICO = "./temp/";
 	static final String EXTENSAO = ".txt";
 	static DateTimeFormatter Format = DateTimeFormatter.ofPattern("ddMMyyyyss");
 	static String dateString = LocalDateTime.now().format(Format);
@@ -32,33 +21,33 @@ public class EscritorLeitor {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
 		for (int i = 0; i < Conta.getQtdMovimentacao(); i++) {
-			// Isso significa que a movimentação realizada foi um deposito
+			// Isso significa que a movimentaï¿½ï¿½o realizada foi um deposito
 
 			if (Conta.getVetorTipoDaMovimentacao(i).equals("Deposito")) {
-				escritor.append("===================Registro de Deposito==================\n");
-				escritor.append("Realizador do deposito: " + Conta.getVetorCPF(i) + "\n");
-				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
+				escritor.append("==========Registro de Deposito=========\n");
+				escritor.append("Realizador do deposito: \n" + Conta.getVetorCPF(i) + "\n");
+				escritor.append("Agï¿½ncia da conta: " + Conta.getVetorAgencia(i) + "\n");
 				escritor.append("Valor depositado: " + Conta.getVetorValor(i) + "\n");
-				escritor.append("Custo da movimentação: R$0,10\n");
+				escritor.append("Custo da movimentaï¿½ï¿½o: R$0,10\n");
 				escritor.append("Saldo apos o deposito: " + Conta.getVetorSaldo(i) + "\n");
-				escritor.append("Data da realização do deposito: " + Conta.getVetorTempo(i) + "\n\n");
+				escritor.append("Data da realizaï¿½ï¿½o do deposito: \n" + Conta.getVetorTempo(i) + "\n\n");
 			} else if (Conta.getVetorTipoDaMovimentacao(i).equals("Saque")) {
-				escritor.append("====================Registro de Saque====================\n");
+				escritor.append("==========Registro de Saque==========\n");
 				escritor.append("Realizador do Saque: " + Conta.getVetorCPF(i) + "\n");
-				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
+				escritor.append("Agï¿½ncia da conta: " + Conta.getVetorAgencia(i) + "\n");
 				escritor.append("Valor sacado: " + Conta.getVetorValor(i) + "\n");
-				escritor.append("Custo da movimentação: R$0,10\n");
+				escritor.append("Custo da movimentaï¿½ï¿½o: R$0,10\n");
 				escritor.append("Saldo apos o saque: " + Conta.getVetorSaldo(i) + "\n");
-				escritor.append("Data da realização do saque: " + Conta.getVetorTempo(i) + "\n\n");
+				escritor.append("Data da realizaï¿½ï¿½o do saque: \n" + Conta.getVetorTempo(i) + "\n\n");
 			} else if (Conta.getVetorTipoDaMovimentacao(i).equals("Transferencia")) {
-				escritor.append("================Registro de Transferencia================\n");
+				escritor.append("=======Registro de Transferencia=======\n");
 				escritor.append("Realizador da transferencia: " + Conta.getVetorCPF(i) + "\n");
-				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
+				escritor.append("Agï¿½ncia da conta: " + Conta.getVetorAgencia(i) + "\n");
 				escritor.append("Valor transferido: " + Conta.getVetorValor(i) + "\n");
-				escritor.append("Custo da movimentação: R$0,20\n");
-				escritor.append("Saldo apos a transferencia: " + Conta.getVetorSaldo(i) + "\n");
-				escritor.append("Conta que receberá a transferência: " + Conta.getVetorCPFT(i) + "\n");
-				escritor.append("Data da realização da transferência: " + Conta.getVetorTempo(i) + "\n\n");
+				escritor.append("Custo da movimentaï¿½ï¿½o: R$0,20\n");
+				escritor.append("Saldo apos a transferencia: \n" + Conta.getVetorSaldo(i) + "\n");
+				escritor.append("Conta que receberï¿½ a transferï¿½ncia: \n" + Conta.getVetorCPFT(i) + "\n");
+				escritor.append("Data da realizaï¿½ï¿½o da transferï¿½ncia: \n" + Conta.getVetorTempo(i) + "\n\n");
 			}
 		}
 		escritor.close();
@@ -67,64 +56,64 @@ public class EscritorLeitor {
 	public static void escritorRelatorioSaldo(String nome, String cpf, double saldo) throws IOException {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + "RSaldo" + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
-		escritor.append("================Registro de Saldo================\n");
-		escritor.append("O seu saldo, " + nome + " é R$" + saldo +".\n");
-		escritor.append("Data da realização do registro: " + dateString2 + "\n\n");
+		escritor.append("===========Registro de Saldo===========\n");
+		escritor.append("O seu saldo, " + nome + "\n ï¿½ R$" + saldo +".\n");
+		escritor.append("Data da realizaï¿½ï¿½o do registro: \n" + dateString2 + "\n\n");
 		escritor.close();
 	}
 
 	public static void escritorRelatorioTributacao(String cpf) throws IOException {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString+ "RTributacao" + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
-		escritor.append("================Registro de tributação================\n");
-		escritor.append("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).\n");
-		escritor.append("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).\n");
-		escritor.append("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).\n\n");
-		escritor.append("A quantidade de transações foi de "+ Conta.getQtdMovimentacao() +", totalizando um valor total de R$"+ Conta.getQtdMovimentacao()*0.10+".\n\n");
+		escritor.append("=========Registro de tributaï¿½ï¿½o=========\n");
+		escritor.append("Para cada saque foi cobrado o valor de\n R$0.10 (dez centavos).\n");
+		escritor.append("Para cada depï¿½sito foi cobrado \no valor de R$0.10 (dez centavos).\n");
+		escritor.append("Para cada transferï¿½ncia foi cobrado \no valor de R$0.20 (vinte centavos).\n\n");
+		escritor.append("A quantidade de transaï¿½ï¿½es foi de "+ Conta.getQtdMovimentacao() +",\n totalizando um valor total de R$"+ Conta.getQtdMovimentacao()*0.10+".\n\n");
 		
 		if (MapUsuario.getMap().get(cpf).getSeguroDeVida()>=0) {
-			escritor.append("O valor aplicado em seguro de vida é de R$"+ MapUsuario.getMap().get(cpf).getSeguroDeVida()+"\n");
+			escritor.append("O valor aplicado em seguro \nde vida ï¿½ de R$"+ MapUsuario.getMap().get(cpf).getSeguroDeVida()+"\n");
 		}
-		escritor.append("Data da realização do registro: " + dateString2 + "\n\n");
+		escritor.append("Data da realizaï¿½ï¿½o do registro: \n" + dateString2 + "\n\n");
 		escritor.close();
 	}
 
 	public static void escritorRelatorioPoupanca(double valor, int dias) throws IOException {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + "RPoupanca" + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
-		escritor.append("================Registro de relatório de poupança================\n");
-		escritor.append("Depositando R$" + valor + " por " + dias + " dias, você terá um rendimento de R$" + valor*dias*0.003/30 +"!\n");
-		escritor.append("Data da realização do registro: " + dateString2 + "\n\n");
+		escritor.append("===Registro de relatï¿½rio de poupanï¿½a===\n");
+		escritor.append("Depositando R$" + valor + " por " + dias + " dias, \nvocï¿½ terï¿½ um rendimento de R$" + valor*dias*0.003/30 +"!\n");
+		escritor.append("Data da realizaï¿½ï¿½o do registro: \n" + dateString2 + "\n\n");
 		escritor.close();
 	}
 
 	public static void escritorRelatorioQtdAgencia(int count, int agencia) throws IOException {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + "RQtdAgencia" + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
-		escritor.append("================Registro de relatório de agencia================\n");
-		escritor.append("\nA quantidade de contas na agencia" + agencia + " é: " + count+".\n");
-		escritor.append("Data da realização do registro: " + dateString2 + "\n\n");
+		escritor.append("====Registro de relatï¿½rio de agenci====\n");
+		escritor.append("\nA quantidade de contas na agencia\n" + agencia + " ï¿½: " + count+".\n");
+		escritor.append("Data da realizaï¿½ï¿½o do registro: \n" + dateString2 + "\n\n");
 		escritor.close();
 	}
 
 	public static void escritorRelatorioTodasContas() throws IOException {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + "RTodasContas" + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
-		escritor.append("================Registro de relatório de contas================\n");
+		escritor.append("====Registro de relatï¿½rio de contas====\n");
 		escritor.append("Nome       Cpf        Agencia");
 		for (Conta value : MapConta.getMapS().values()) {
 			escritor.append("\n"+value.getNome()+" "+value.getCpf()+" "+value.getAgencia()+"\n");
 		}
-		escritor.append("Data da realização do registro: " + dateString2 + "\n\n");
+		escritor.append("Data da realizaï¿½ï¿½o do registro: " + dateString2 + "\n\n");
 		escritor.close();
 	}
 
 	public static void escritorRelatorioSaldoTotalBanco(double sum) throws IOException {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + "RSaldoTotalBanco" + EXTENSAO));
 		escritor.append(Menu.logo() + "\n");
-		escritor.append("================Registro de relatório de saldo================\n");
-		escritor.append("\nO valor total, em todas as contas do banco, é de: R$"+ sum+".\n");
-		escritor.append("Data da realização do registro: " + dateString2 + "\n\n");
+		escritor.append("=====Registro de relatï¿½rio de saldo======\n");
+		escritor.append("\nO valor total, em todas as contas\n do banco, ï¿½ de: R$"+ sum+".\n");
+		escritor.append("Data da realizaï¿½ï¿½o do registro: \n" + dateString2 + "\n\n");
 		escritor.close();
 	}
 }
