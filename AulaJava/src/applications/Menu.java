@@ -51,7 +51,7 @@ public class Menu {
 		int i = 1;
 		do {
 			System.out.println(
-					"\nVocê gostaria de fazer qual tipo de relatório?\n1 - Saldo\n2 - Relatório de tributação\n3 - Simulação rendimento poupança\n4 - Sair");
+					"\nVocê gostaria de fazer qual tipo de relatório?\n1 - Saldo\n2 - Relatório de tributação\n3 - Simulação rendimento poupança\n4 - Seguro de vida\n5 - Sair");
 			int opcao = sc.nextInt();
 			Menu.linha("Você gostaria de fazer qual tipo de relatório?");
 			System.out.println();
@@ -62,12 +62,15 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioSaldo(conta.getCpf(),conta.getNome(), conta.getSaldo());
 				break;
 			case 2:
-				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
-						+ conta.getQtdMovimentacao() * 0.10);
-				EscritorLeitor.escritorRelatorioTributacao();
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
+				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
+						+ conta.getQtdMovimentacao() * 0.10);
+				if (MapUsuario.getMap().get(conta.getCpf()).getSeguroDeVida()>=0) {
+					System.out.println("O valor aplicado em seguro de vida é de R$"+ MapUsuario.getMap().get(conta.getCpf()).getSeguroDeVida()+"\n");
+				}
+				EscritorLeitor.escritorRelatorioTributacao(conta.getCpf());
 				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
@@ -83,6 +86,24 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioPoupanca(valor, dias);
 				break;
 			case 4:
+				System.out
+						.println("Será debitado 20% do valor segurado.\nVocê gostaria de continuar?\n1 - Sim\n2 - Não");
+				double opcaoSeguro = sc.nextDouble();
+				linha("Será debitado 20% do valor segurado.");
+				if (opcaoSeguro == 1) {
+					System.out.println("\nQual valor você gostaria de aplicar no seguro de vida?");
+					double aplicacao = sc.nextDouble();
+					if (aplicacao * 0.2 < conta.getSaldo()) {
+						conta.setSaldo(conta.getSaldo() - aplicacao * 0.20);
+						System.out.println("Seguro de vida contratado com sucesso!");
+						linha("Qual valor você gostaria de aplicar no seguro de vida?");
+						MapUsuario.getMap().get(conta.getCpf()).setSeguroDeVida(aplicacao);
+					} else {
+						System.out.println("\nSaldo insuficiente para esta operação." + "\nOperação não realizada.");
+					}
+				}
+				break;
+			case 5:
 				i = 2;
 				break;
 			default: 
@@ -135,11 +156,11 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
-				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$" + conta.getQtdMovimentacao()*0.10);
-				EscritorLeitor.escritorRelatorioTributacao();
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
-				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
+				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$" + conta.getQtdMovimentacao()*0.10);
+				EscritorLeitor.escritorRelatorioTributacao(conta.getCpf());
 				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
@@ -216,12 +237,12 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
-				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
-						+ conta.getQtdMovimentacao() * 0.10);
-				EscritorLeitor.escritorRelatorioTributacao();
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
-				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
+				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
+						+ conta.getQtdMovimentacao() * 0.10);
+				EscritorLeitor.escritorRelatorioTributacao(conta.getCpf());
 				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
@@ -248,6 +269,7 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioQtdAgencia(count, conta.getAgencia());
 				break;
 			case 5:
+				System.out.println("Nome       Cpf        Agencia");
 				for (Conta value : MapConta.getMapS().values()) {
 					System.out.println("\n"+value.getNome()+" "+value.getCpf()+" "+value.getAgencia());
 				}
@@ -307,12 +329,12 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(),conta.getSaldo());
 				break;
 			case 2:
-				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
-						+ conta.getQtdMovimentacao() * 0.10);
-				EscritorLeitor.escritorRelatorioTributacao();
 				System.out.println("Para cada saque foi cobrado o valor de R$0.10 (dez centavos).");
 				System.out.println("Para cada depósito foi cobrado o valor de R$0.10 (dez centavos).");
-				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (dez centavos).");
+				System.out.println("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
+				System.out.println("O relatório de tributação foi gerado!\nO gasto total é: R$"
+						+ conta.getQtdMovimentacao() * 0.10);
+				EscritorLeitor.escritorRelatorioTributacao(conta.getCpf());
 				Menu.linha("Para cada transferência foi cobrado o valor de R$0.20 (vinte centavos).");
 				break;
 			case 3:
@@ -339,6 +361,7 @@ public class Menu {
 				EscritorLeitor.escritorRelatorioQtdAgencia(count, conta.getAgencia());
 				break;
 			case 5:
+				System.out.println("Nome       Cpf        Agencia");
 				for (Conta value : MapConta.getMapS().values()) {
 					System.out.println("\n"+value.getNome()+" "+value.getCpf()+" "+value.getAgencia());
 				}
@@ -366,7 +389,6 @@ public class Menu {
 			}
 		} while (i != 2);
 	}
-	
 	//função para criação do menu movimentaçãos
 	public static void menuMovimentacao(Conta conta) throws ContaExceptions, IOException {
 		int i = 1;
@@ -484,5 +506,5 @@ public class Menu {
 	public static String erroMenu() {
 		return "Erro encontrado: ";
 	}
-
+	
 }

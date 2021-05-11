@@ -4,6 +4,7 @@ public abstract class Usuario {
 	protected String cpf;
 	protected String senha;
 	protected String cargo;
+	protected double seguroDeVida=0;
 	
 	public Usuario() {
 		
@@ -30,5 +31,11 @@ public abstract class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public double getSeguroDeVida() {
+		return 0;
+	}
+	public void setSeguroDeVida(double seguroDeVida) {
+	
 	}
 }

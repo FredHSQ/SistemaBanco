@@ -92,20 +92,20 @@ public abstract class Conta {
 			System.out.printf("O custo da movimentação é: R$0,20\n");
 			this.saldo = this.saldo - valorTransfere - 0.20;
 			MapConta.getMap().get(cpf).setSaldo(MapConta.getMap().get(cpf).getSaldo() + valorTransfere);
-			qtdMovimentacao++;
+			
 			System.out.printf("O novo saldo é: R$%.2f\n", this.saldo);
 			System.out.println("O valor de R$" + valorTransfere + " foi transferido para conta que tem como titular: "
 					+ MapConta.getMap().get(cpf).getNome() + "!");
 			Menu.linha("Digite o cpf da conta que gostaria de transferir dsadsadsadsadsadsadsadsadsad");
 			vetorTipoDaMovimentacao[qtdMovimentacao] = "Transferencia";
 	        vetorCPF[qtdMovimentacao] = this.getCpf();
-	        vetorCPFT[qtdMovimentacao] = MapConta.getMap().get(cpf).getCpf();
+	        vetorCPFT[qtdMovimentacao] = MapConta.getMap().get(cpf).getNome();
 	        vetorAgencia[qtdMovimentacao] = (String.valueOf(this.getAgencia())) ;
 	        vetorValor[qtdMovimentacao] = (String.valueOf(valorTransfere));
 	        vetorSaldo[qtdMovimentacao] = (String.valueOf(this.getSaldo())); 
 	        vetorTempo[qtdMovimentacao] = LocalDateTime.now().format(formatter);
-	        // 
 	        qtdMovimentacao++;
+	       
 	        vetorTipoDaMovimentacao[qtdMovimentacao] = "0";
 	        vetorCPF[qtdMovimentacao] = this.getCpf();
 	        vetorCPFT[qtdMovimentacao] = MapConta.getMap().get(cpf).getCpf();
@@ -113,6 +113,7 @@ public abstract class Conta {
 	        vetorValor[qtdMovimentacao] = (String.valueOf(valorTransfere));
 	        vetorSaldo[qtdMovimentacao] = (String.valueOf(this.getSaldo())); 
 	        vetorTempo[qtdMovimentacao] = LocalDateTime.now().format(formatter);
+	        qtdMovimentacao++;
 		}
 	}
 	
