@@ -439,7 +439,7 @@ public class Menu {
 		// do para repetir o menu caso de algum erro ou a pessoa volte de um menu mais avançado, só sai do menu caso a pessoa aperte o numero de saida
 		do {
 			System.out.println(
-					"\nvocê gostaria de fazer qual tipo de \nmovimentação?\n1 - Depositar\n2 - Sacar\n3 - Transferir\n4 - Sair");
+					"\nVocê gostaria de fazer qual tipo de \nmovimentação?\n1 - Depositar\n2 - Sacar\n3 - Transferir\n4 - Sair");
 			String opcao = sc.next();
 			Menu.linha();
 			switch (opcao) {
@@ -452,21 +452,12 @@ public class Menu {
 					Menu.linha();
 					System.out.println();
 					conta.depositar(valor);
-					System.out.println("\nGostaria de realizar outra transação?\n1 - Sim\n2 - Não");
-					i = sc.next();
-					Menu.linha();
-					// if para pedir pro usuario recomeçar caso digite um valor errado
-					if (i != "1" && i != "2") {
-						System.out.println("O valor digitado não é válido.\n Repita por favor.");
-						Menu.linha();
-						System.out.println();
-						i = "1";
-					}
+
 				} catch (ContaExceptions e) {
 					System.out.println(e);
 					linha();
 				} catch (Exception e) {
-					System.out.println("Valor digitado inválido. \nPor favor tente novamente. "+e);
+					System.out.println("\nValor digitado inválido. \nPor favor tente novamente. "+e);
 					linha();
 				}
 				break;
@@ -478,16 +469,7 @@ public class Menu {
 					Menu.linha();
 					System.out.println();
 					conta.sacar(valor);
-					System.out.println("\nGostaria de realizar outra transação?\n1 - Sim\n2 - Não");
-					i = sc.next();
-					Menu.linha();
-					// if para pedir pro usuario recomeçar caso digite um valor errado
-					if (i != "1" && i != "2") {
-						System.out.println("O valor digitado não é válido. Repita por favor.");
-						Menu.linha();
-						System.out.println();
-						i = "1";
-					}
+
 				} catch (ContaExceptions e) {
 					System.out.println(e);
 				}
@@ -502,16 +484,7 @@ public class Menu {
 					Menu.linha();
 					System.out.println();
 					conta.transfere(valor, cpf);
-					System.out.println("\nGostaria de realizar outra transação?\n1 - Sim\n2 - Não");
-					i = sc.next();
-					Menu.linha();
-					// if para pedir pro usuario recomeçar caso digite um valor errado
-					if (i != "1" && i != "2") {
-						System.out.println("O valor digitado não é válido. \nRepita por favor.");
-						Menu.linha();
-						System.out.println();
-						i = "1";
-					}
+
 				} catch (ContaExceptions e) {
 					System.out.println(e);
 					linha();

@@ -17,9 +17,9 @@ public class SistemaInterno {
 		Menu.bemVindo();// menu bem vindo para ficar bonitinho
 		
 		// leitor dos arquivos
-		// caso de erro de leitura de arquivo tenta tirar 1 ponto
-		MapConta.leitorConta("../temp/Conta.txt");
-		MapUsuario.leitorUsuario("../temp/Usuario.txt");
+		// caso de erro de leitura de arquivo tenta adicionar 1 ponto
+		MapConta.leitorConta("./temp/Conta.txt");
+		MapUsuario.leitorUsuario("./temp/Usuario.txt");
 		
 		// processo de login
 		String acesso = null;

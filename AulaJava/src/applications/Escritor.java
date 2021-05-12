@@ -10,8 +10,9 @@ import java.time.format.DateTimeFormatter;
 import contas.Conta;
 
 public class Escritor {
+	
 	// facilitadores
-	static final String PATH_BASICO = "../temp/";
+	static final String PATH_BASICO = "./temp/";
 	static final String EXTENSAO = ".txt";
 	// formatador para o nome do arquivo
 	static DateTimeFormatter Format = DateTimeFormatter.ofPattern("ddMMyyyyss");
@@ -35,7 +36,7 @@ public class Escritor {
 				escritor.append("Realizador do deposito: \n" + Conta.getVetorCPF(i) + "\n");
 				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
 				escritor.append("Valor depositado: \nR$ " + Conta.getVetorValor(i) + "\n");
-				escritor.append("Custo da movimentação: \nR$ 0,10\n");
+				escritor.append("Custo da movimentação: \nR$ 0.10\n");
 				escritor.append("Saldo após o deposito: \nR$ " + Conta.getVetorSaldo(i) + "\n");
 				escritor.append("Data da realização do deposito: \n" + Conta.getVetorTempo(i) + "\n\n");
 			} else if (Conta.getVetorTipoDaMovimentacao(i).equals("Saque")) {
@@ -43,7 +44,7 @@ public class Escritor {
 				escritor.append("Realizador do Saque: \n" + Conta.getVetorCPF(i) + "\n");
 				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
 				escritor.append("Valor sacado: \nR$ " + Conta.getVetorValor(i) + "\n");
-				escritor.append("Custo da movimentação: \nR $0,10\n");
+				escritor.append("Custo da movimentação: \nR $0.10\n");
 				escritor.append("Saldo após o saque: \nR$ " + Conta.getVetorSaldo(i) + "\n");
 				escritor.append("Data da realização do saque: \n" + Conta.getVetorTempo(i) + "\n\n");
 			} else if (Conta.getVetorTipoDaMovimentacao(i).equals("Transferencia")) {
@@ -51,7 +52,7 @@ public class Escritor {
 				escritor.append("Realizador da transferência: \n" + Conta.getVetorCPF(i) + "\n");
 				escritor.append("Agência da conta: " + Conta.getVetorAgencia(i) + "\n");
 				escritor.append("Valor transferido: \nR$ " + Conta.getVetorValor(i) + "\n");
-				escritor.append("Custo da movimentação: \nR$ 0,20\n");
+				escritor.append("Custo da movimentação: \nR$ 0.20\n");
 				escritor.append("Saldo após a transfêrencia: \nR$ " + Conta.getVetorSaldo(i) + "\n");
 				escritor.append("Conta que receberá a transferência: \n" + Conta.getVetorCPFT(i) + "\n");
 				escritor.append("Data da realização da transferência: \n" + Conta.getVetorTempo(i) + "\n\n");
