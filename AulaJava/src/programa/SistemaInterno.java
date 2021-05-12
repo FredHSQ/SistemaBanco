@@ -29,11 +29,11 @@ public class SistemaInterno {
             System.out.println("Por favor informe a senha: ");
             String senhaInformada =sc.next();
             if(MapUsuario.getMap().containsKey(cpfInformado) && MapUsuario.getMap().get(cpfInformado).getSenha().equals(senhaInformada)) {
-                System.out.println("Login concluï¿½do");
+                System.out.println("Login concluído");
                 Menu.linha();
                 acesso = MapUsuario.getMap().get(cpfInformado).getCargo();
             }else {
-                System.out.println("Senha e CPF nï¿½o correspondem \na nenhum usuario.");
+                System.out.println("Senha e CPF não correspondem \na nenhum usuário.");
             }
         } while(acesso ==null);
 		
