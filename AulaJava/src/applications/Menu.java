@@ -66,7 +66,7 @@ public class Menu {
 			case "1":
 				System.out.println("O Relatório de saldo foi gerado!\nO saldo atual é: R$" + conta.getSaldo()+ ".");
 				Menu.linha();
-				Escritor.escritorRelatorioSaldo(conta.getCpf(),conta.getNome(), conta.getSaldo());
+				Escritor.escritorRelatorioSaldo(conta.getNome(),conta.getCpf(), conta.getSaldo());
 				break;
 			// relatório de tributação, mostra o custo das movimentações da conta do login, e chama o escritor, jogando os dados nescessários
 			case "2":
@@ -106,7 +106,7 @@ public class Menu {
 				String opcaoSeguro = sc.next();
 				linha();
 				// if para decisão feita a cima
-				if (opcaoSeguro == "1") {
+				if (opcaoSeguro.equals("1")) {
 					System.out.println("\nQual valor você gostaria de aplicar \nno seguro de vida?");
 					double aplicacao = sc.nextDouble();
 					// se o custo da aplicação for maior que o saldo não permite a operação
@@ -121,6 +121,8 @@ public class Menu {
 						System.out.println("\nSaldo insuficiente para esta \noperação." + "\noperação não realizada.");
 						linha();
 					}
+				}else if (opcaoSeguro.equals("2")){
+					break;
 				}else {
 					System.out.println("\nFoi digitado um valor inválido, \npor favor repita a operação!");	
 					linha();
@@ -357,7 +359,7 @@ public class Menu {
 		int i = 1;
 		do {
 			System.out.println(
-					"\nVocê gostaria de fazer qual tipo de \nrelatório\n1 - Saldo\n2 - Relatório de tributação\n3 - simulação rendimento poupança\n4 - Némero de contas da agência\n5 - Nome, CPF e Agencia de todas as \ncontas\n6 - Valor total dentro do banco\n7 - Sair");
+					"\nVocê gostaria de fazer qual tipo de \nrelatório\n1 - Saldo\n2 - Relatório de tributação\n3 - simulação rendimento poupança\n4 - Número de contas da agência\n5 - Nome, CPF e Agencia de todas as \ncontas\n6 - Valor total dentro do banco\n7 - Sair");
 			String opcao = sc.next();
 			Menu.linha();
 			System.out.println();
@@ -418,7 +420,7 @@ public class Menu {
 				for (Conta value : MapConta.getMap().values()) {
 						sum=sum+value.getSaldo();
 				}
-				System.out.printf("\nO valor total, em todas as contas do banco, é \nde: R$"+ sum);
+				System.out.printf("\nO valor total, em todas as contas do banco, é \nde: R$"+ sum + "\n");
 				linha();
 				Escritor.escritorRelatorioSaldoTotalBanco(sum);
 				System.out.println();

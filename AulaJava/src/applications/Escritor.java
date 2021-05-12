@@ -122,7 +122,7 @@ public class Escritor {
 		BufferedWriter escritor = new BufferedWriter(new FileWriter(PATH_BASICO + dateString + "RSaldoTotalBanco" + EXTENSAO,StandardCharsets.UTF_8));
 		escritor.append(Menu.logo() + "\n");
 		escritor.append("=====Registro de relatório de Saldo======\n");
-		escritor.append("\nO valor total, em todas as contas\n do banco, é de: R$"+ sum+".\n");
+		escritor.append("\nO valor total, em todas as contas\ndo banco, é de: R$"+ sum+".\n");
 		escritor.append("Data da realização do registro: \n" + dateString2 + "\n\n");
 		escritor.close();
 	}
