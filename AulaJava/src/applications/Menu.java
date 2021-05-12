@@ -13,7 +13,7 @@ public class Menu {
 	// função para criação do menu inicial
 	public static void bemVindo() {
 		linha(); // chama função "linha()" 
-		System.out.println("\n   |Bem vindo ao Banco Justice League|");
+		System.out.println("\n|   Bem vindo ao Banco Justice League   |");
 		linha(); 
 		System.out.println();
 	}
@@ -508,6 +508,22 @@ public class Menu {
 	//função para criação da logo
 	public static String logo() {
 		
+		return ("\n      %%%%%%%%%%%%%.%%%%%%%%%%%%%      \r\n"
+				+ "      %%                       %%       \r\n"
+				+ "      %%    %%%%%%% %%%        %%       \r\n"
+				+ "      %%        %%% %%%        %%       \r\n"
+				+ "      %%        %%% %%%        %%       \r\n"
+				+ "      %%        %%   %%        %%       \r\n"
+				+ "      %%   /%.  %%% %%%        %%       \r\n"
+				+ "      %%  %%%.  %%% %%%        %%       \r\n"
+				+ "      %%  %%%%%%%%% %%%/%%%%   %%       \r\n"
+				+ "      %%   #%%%%%%  %%%%%%     %%       \r\n"
+				+ "      %%                       %%       \r\n"
+				+ "      %%%%%%%%%%%%%.%%%%%%%%%%%%%       \r\n");
+	}
+	
+public static String logoR() {
+		
 		return ("      @@@@@@@@@@@@@.@@@@@@@@@@@@@      \r\n"
 				+ "      @@                       @@       \r\n"
 				+ "      @@    @@@@@@@ @@@        @@       \r\n"
@@ -519,8 +535,7 @@ public class Menu {
 				+ "      @@  @@@@@@@@@ @@@/@@@@   @@       \r\n"
 				+ "      @@   #@@@@@@  @@@@@@     @@       \r\n"
 				+ "      @@                       @@       \r\n"
-				+ "      @@@@@@@@@@@@@.@@@@@@@@@@@@@       \r\n"
-				+ "                                ");
+				+ "      @@@@@@@@@@@@@.@@@@@@@@@@@@@       \r\n");
 	}
 	
 	//função para criação de linhas"\n"
