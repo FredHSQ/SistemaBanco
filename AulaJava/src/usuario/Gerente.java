@@ -16,7 +16,7 @@ public class Gerente extends Usuario{
 		setCargo(CargoEnum.GERENTE.name());
 	}
 	
-	//getter agencia
+	//getter agencia, agencia só é settada quando é criado, não planejamos uma forma de mudança de agencia do gerente
 	public int getAgencia() {
 		return agencia;
 	}

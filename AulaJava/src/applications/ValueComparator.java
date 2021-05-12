@@ -5,8 +5,9 @@ import java.util.Map;
 
 import contas.Conta;
 
+//usado para organizar as contas por nome
 class ValueComparator implements Comparator<String> {
-    Map<String, Conta> base;
+	Map<String, Conta> base;
 
     public ValueComparator(Map<String, Conta> base) {
         this.base = base;

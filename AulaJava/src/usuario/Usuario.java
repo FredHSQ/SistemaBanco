@@ -4,8 +4,9 @@ public abstract class Usuario {
 	protected String cpf;
 	protected String senha;
 	protected String cargo;
-	protected double seguroDeVida=0;
+	protected double seguroDeVida=0;// não criamos classe de seguro de vida, achamos que ia ser uma bazzuca para matar uma formiga
 	
+	// construtores pai
 	public Usuario() {
 		
 	}
@@ -14,6 +15,7 @@ public abstract class Usuario {
 		this.senha=senha;
 	}
 	
+	//setters e getters
 	public String getCpf() {
 		return this.cpf;
 	}
@@ -32,6 +34,8 @@ public abstract class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	// seguro de vida não tem set para usuario pq não é para todos os filhos herdarem, só cliente
 	public double getSeguroDeVida() {
 		return 0;
 	}

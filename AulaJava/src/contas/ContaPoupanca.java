@@ -13,7 +13,7 @@ public class ContaPoupanca extends Conta {
 		setAgencia(agencia);
 		setSaldo(saldo);
 	}
-	//getter do "tipo"
+	//getter do "tipo", não tem setter pq não planejamos uma mudança de tipo de conta, ou é poupança ou é corrente
 	public int getTipo() {
 		return tipo;
 	}
